@@ -1,0 +1,13 @@
+{
+  "tema": "Renda PJ",
+  "documento": "CNPJ Baixado",
+  "pode_aceitar": false,
+  "acao_analista": [
+    "Reprovar o fluxo e informar que a empresa está com CNPJ baixado",
+    "Não aceitar nenhum comprovante de faturamento"
+  ],
+  "resposta_devolucao": "Fluxo reprovado. Não aceitamos renda de empresas com CNPJ baixado.",
+  "manual": {
+    "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FCNPJ%20Baixado%7Ca7666094-3b2c-4a18-a320-325fcaee88b2%2F%29&wdorigin=NavigationUrl"
+  }
+}

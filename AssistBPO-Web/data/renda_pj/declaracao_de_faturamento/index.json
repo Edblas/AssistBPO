@@ -1,0 +1,26 @@
+{
+  "id": "declaracao_faturamento",
+  "tema": "Renda PJ",
+  "documento": "Declaração de Faturamento - Relação de Faturamento",
+
+  "pode_aceitar": true,
+  "condicao": "Empresa com relação de faturamento válida, assinada conforme regras e com período claramente definido",
+
+  "acao_analista": [
+    "Confirmar se a relação de faturamento está assinada pelo sócio ou representante da empresa e pelo contador (dispensada assinatura do contador para MEI)",
+    "Conferir se a Consulta de Opção pelo Simples Nacional está anexada e válida, quando aplicável",
+    "Validar o período de faturamento apresentado no documento",
+    "Para empresas com menos de 12 meses de constituição, dividir o faturamento pelo número de meses efetivos desde a abertura",
+    "Para empresas com 12 meses ou mais de constituição, dividir sempre por 12 meses, mesmo que o documento apresente menos meses",
+    "Considerar meses com faturamento zerado na divisão da renda",
+    "Permitir a inclusão de meses com faturamento negativo na média, juntamente com os positivos",
+    "Caso o documento inclua o mês vigente, classificar o tipo de renda conforme orientação da agência: Declaração de Faturamento ou Previsão de Faturamento"
+  ],
+
+  "resposta_devolucao": "Documento de Relação de Faturamento analisado e renda considerada conforme regras vigentes.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FDeclara%C3%A7%C3%A3o%20de%20faturamento%7Cf2037cb3-03cd-4b82-98a7-dc499306092f%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}

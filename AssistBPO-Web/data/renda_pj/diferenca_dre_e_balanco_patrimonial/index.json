@@ -1,0 +1,23 @@
+{
+  "id": "diferenca_dre_e_balanco_patrimonial",
+  "tema": "Renda PJ",
+  "documento": "Diferenca entre Balanço Patrimonial e DRE",
+
+  "pode_aceitar": null,
+  "condicao": "Fluxo informativo para apoiar a identificação correta do tipo de documento contábil",
+
+  "acao_analista": [
+    "Analisar o conteúdo do documento apresentado, e não apenas o título",
+    "Identificar se o documento apresenta receitas, custos, despesas e resultado, caracterizando uma DRE",
+    "Identificar se o documento apresenta ativos, passivos e patrimônio líquido em uma data específica, caracterizando um Balanço Patrimonial",
+    "Evitar classificar documentos como Balanço ou DRE apenas pelo nome do arquivo",
+    "Utilizar a estrutura contábil apresentada para definir corretamente o tipo de documento"
+  ],
+
+  "resposta_devolucao": "Documento analisado conforme estrutura contábil apresentada, considerando corretamente se se trata de DRE ou Balanço Patrimonial.",
+
+  "manual": {
+    "link_fluxo": "",
+    "link_resposta": ""
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "consulta_opcao_simples_nacional",
+  "tema": "Renda PJ",
+  "documento": "Consulta de Opção pelo Simples Nacional",
+
+  "pode_aceitar": true,
+  "condicao": "Empresa classificada como Microempresa (ME) ou Empresa de Pequeno Porte (EPP)",
+
+  "acao_analista": [
+    "Verificar o porte da empresa antes de qualquer solicitação",
+    "Solicitar a consulta de opção pelo Simples Nacional apenas quando a empresa for Microempresa (ME) ou Empresa de Pequeno Porte (EPP)",
+    "Não solicitar a consulta para empresas com faturamento acima de R$ 4,8 milhões",
+    "Não solicitar a consulta para empresas de Médio Porte ou Grande Porte",
+    "Confirmar a consulta por meio da Plataforma de Atendimento ou pelo site do Simples Nacional"
+  ],
+
+  "resposta_devolucao": "CONSULTA DE OPÇÃO DO SIMPLES: ANEXAR CÓPIA DO COMPROVANTE DO SIMPLES NACIONAL",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FSimples%20Nacional%7Ca5dbd916-a336-4e5f-a5ca-d4bc7bdb2fb9%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28PARECERES%F0%9F%93%9A.one%7Ceab9ba62-4fb5-42e5-acbf-f10850eb4cd0%2FPareceres%20de%20Devolu%C3%A7%C3%A3o%20-%20Explica%C3%A7%C3%A3o%7C40a14cfa-0d23-42f3-9fe1-da5314cbbd80%2F%29&wdorigin=NavigationUrl"
+  }
+}

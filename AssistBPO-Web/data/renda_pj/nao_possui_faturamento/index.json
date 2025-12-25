@@ -1,0 +1,22 @@
+{
+  "id": "renda_pj_nao_possui_faturamento",
+  "tema": "Renda PJ",
+  "documento": "Nao Possui Faturamento",
+
+  "pode_aceitar": true,
+  "condicao": "Quando o documento apresenta valor 0,00 ou 0,01, ou quando o associado declara que não possui faturamento ou se recusa a informar",
+
+  "acao_analista": [
+    "Confirmar que o documento apresenta valor 0,00 ou 0,01, ou que o associado declarou que não possui faturamento ou se recusou a informar",
+    "Verificar a Consulta de Opção pelo Simples Nacional na chave correta, mesmo quando o valor é 0,00 ou 0,01",
+    "Validar o porte da empresa na Receita Federal como ME (Microempresa) ou EPP (Empresa de Pequeno Porte)",
+    "Para empresas recém-constituídas, conferir a data de abertura e se o documento indica claramente: empresa recém-constituída, faturamento 0,00 e renda variável"
+  ],
+
+  "resposta_devolucao": "Renda cadastrada como não possui faturamento, conforme declaração apresentada e regras vigentes.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FN%C3%A3o%20possui%20faturamento%7Cf73b8efb-e539-454e-b14b-605e4c93f7d6%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}

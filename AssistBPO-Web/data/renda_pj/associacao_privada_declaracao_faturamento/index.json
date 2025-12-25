@@ -1,0 +1,22 @@
+{
+  "id": "associacao_privada_declaracao_faturamento",
+  "tema": "Renda PJ",
+  "documento": "Associação Privada Declaração de Faturamento",
+
+  "pode_aceitar": true,
+  "condicao": "Entidade classificada como Associação Privada (CNPJ 399-9), com declaração assinada por Presidente ou Tesoureiro autorizado",
+
+  "acao_analista": [
+    "Confirmar a natureza jurídica da entidade como Associação Privada (CNPJ 399-9)",
+    "Validar se os responsáveis pela declaração são Presidente ou Tesoureiro autorizado",
+    "Analisar o documento conforme regras de Declaração de Faturamento"
+  ],
+
+  "resposta_devolucao": "Documento de associação privada analisado e renda considerada conforme regras.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FAssocia%C3%A7%C3%A3o%20Privada%7Cc3235aaf-9c29-4fc6-93f2-afa56100e89d%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}
+

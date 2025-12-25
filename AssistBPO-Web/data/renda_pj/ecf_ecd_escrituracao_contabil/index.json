@@ -1,0 +1,65 @@
+{
+  "id": "ecf_ecd_escrituracao_contabil",
+  "tema": "Renda PJ",
+  "documento": "ECF / ECD - Escrituração Contábil Fiscal e Escrituração Contábil Digital",
+
+  "pode_aceitar": true,
+
+  "condicao": "Aceitar somente documentos do SPED referentes a período fiscal fechado e devidamente protocolados",
+
+  "acao_analista": [
+    "Verificar se o documento possui recibo de entrega protocolado pelo SERPRO",
+    "Classificar o tipo de renda: com recibo de entrega → Faturamento; sem recibo de entrega → Declaração de Faturamento",
+    "Conferir o período de apuração: sempre período fechado; nunca aceitar documentos do ano corrente",
+    "Para empresas recém-constituídas, considerar o período a partir da data de abertura até o fechamento do exercício",
+    "Validar os valores de receita ou faturamento apresentados no documento",
+    "Na ECF, somar os quatro trimestres (T01 a T04) para apuração do faturamento anual",
+    "Priorizar Receita Bruta; caso não esteja disponível, utilizar Receita Líquida",
+    "Considerar apenas valores de crédito (C); ignorar valores de débito (D)",
+    "Conferir assinaturas digitais obrigatórias do contador e do representante legal da empresa",
+    "Confirmar que o documento não seja apenas Balanço Patrimonial isolado; deve estar acompanhado de DRE",
+    "Certificar que não haja mistura de períodos ou duplicidade de valores"
+  ],
+
+  "resposta_devolucao": "Documento ECF/ECD analisado e renda considerada conforme período fiscal fechado e valores de receita/faturamento, seguindo regras de validação do SPED.",
+
+  "manual": {
+    "descricao": "A ECF e a ECD são documentos integrantes do SPED e refletem a escrituração contábil e fiscal oficial da empresa, podendo ser utilizados para comprovação de faturamento.",
+    "tipo_renda": {
+      "com_recibo_entrega": "Faturamento",
+      "sem_recibo_entrega": "Declaração de Faturamento"
+    },
+    "estrutura_ecf": {
+      "trimestres": [
+        "T01 – janeiro a março",
+        "T02 – abril a junho",
+        "T03 – julho a setembro",
+        "T04 – outubro a dezembro"
+      ],
+      "faturamento_anual": "Soma dos quatro trimestres apresentados"
+    },
+    "campos_prioritarios": [
+      "Receita Bruta",
+      "Receita Líquida"
+    ],
+    "registro_comum": "Registro P150 – Demonstração do Resultado (Receita Bruta, Receita Líquida, Resultado Operacional)",
+    "periodo_apuracao": [
+      "Sempre período fechado",
+      "Empresa aberta em 03/2024 → período de 03/2024 a 12/2024",
+      "Empresa aberta antes de 2024 → período de 01/01/2024 a 31/12/2024"
+    ],
+    "assinaturas_obrigatorias": [
+      "Contador",
+      "Representante legal",
+      "Protocolo SERPRO"
+    ],
+    "pontos_de_atencao": [
+      "Não aceitar Balanço Patrimonial isolado",
+      "Valores devem refletir receita ou faturamento real",
+      "Evitar mistura de períodos",
+      "Considerar apenas valores de crédito (C)"
+    ]
+  },
+
+  "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FECF%5C%2FECD%7Cae352cd7-37d8-4042-8348-49e36c62a474%2F%29&wdorigin=NavigationUrl"
+}

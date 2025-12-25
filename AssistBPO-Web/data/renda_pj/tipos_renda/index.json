@@ -1,0 +1,91 @@
+{
+  "tema": "Renda PJ",
+  "fluxos": [
+    {
+      "id": "RPJ-001",
+      "fluxo": "Consulta CRC",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-002",
+      "fluxo": "Documentos para Comprovação de Inatividade ou Faturamento Zerado",
+      "tipo_renda": "Não possui faturamento"
+    },
+    {
+      "id": "RPJ-003",
+      "fluxo": "Consulta de Opção pelo Simples Nacional",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-004",
+      "fluxo": "Declaração de Faturamento – Relação de Faturamento",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-005",
+      "fluxo": "Desenquadramento do Simples Nacional / SIMEI",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-006",
+      "fluxo": "DRE – Demonstração do Resultado do Exercício",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-007",
+      "fluxo": "DSP – Demonstração de Sobras ou Perdas",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-008",
+      "fluxo": "ECF / ECD – Escrituração Contábil",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-009",
+      "fluxo": "Faturamento de Filial",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-010",
+      "fluxo": "Faturamento Emitido pelo Sicoob",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-011",
+      "fluxo": "MEI (Microempreendedor Individual)",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-012",
+      "fluxo": "Não Possui Faturamento",
+      "tipo_renda": "Não possui faturamento"
+    },
+    {
+      "id": "RPJ-013",
+      "fluxo": "Notas Fiscais – Comprovação de Faturamento",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-014",
+      "fluxo": "Prefeituras (Entes Públicos)",
+      "tipo_renda": "Faturamento"
+    },
+    {
+      "id": "RPJ-015",
+      "fluxo": "Previsão de Faturamento",
+      "tipo_renda": "Previsão de Faturamento"
+    },
+    {
+      "id": "RPJ-016",
+      "fluxo": "Serasa Experian",
+      "tipo_renda": "Declaração de Faturamento"
+    },
+    {
+      "id": "RPJ-017",
+      "fluxo": "Simples Nacional / PGDAS – Mercado Interno e Externo",
+      "tipo_renda": "Faturamento"
+    }
+  ]
+}
+

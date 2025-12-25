@@ -1,0 +1,62 @@
+{
+  "id": "mei_microempreendedor_individual",
+  "tema": "Renda PJ",
+  "documento": "MEI - Microempreendedor Individual",
+
+  "pode_aceitar": true,
+
+  "condicao": "Aceitar documentos próprios do regime MEI, independentemente de ultrapassagem do limite anual",
+
+  "acao_analista": [
+    "Identificar o tipo de documento apresentado: Declaração Anual do SIMEI, Relação de Faturamento MEI, Previsão de Faturamento MEI ou Declaração de Faturamento MEI",
+    "Conferir o período de apuração informado no documento",
+    "Validar se o CNPJ possui menos ou mais de 12 meses de abertura",
+    "Calcular a renda média mensal dividindo o faturamento pelo número de meses ativos ou informados",
+    "Confirmar a assinatura do representante da empresa quando exigida",
+    "Dispensar assinatura de contador para documentos de MEI",
+    "Não reprovar o documento caso o faturamento ultrapasse o limite anual do MEI"
+  ],
+
+  "resposta_devolucao": "Documento de MEI analisado e renda considerada conforme regras do regime.",
+
+  "manual": {
+    "limite_faturamento_2025": {
+      "mei_comum": 81000,
+      "mei_caminhoneiro": 251600
+    },
+    "cnaes_permitidos_mei_caminhoneiro": [
+      "4930-2/01 – Transporte municipal de cargas não perigosas",
+      "4930-2/02 – Transporte intermunicipal, interestadual e internacional de cargas não perigosas",
+      "4930-2/03 – Transporte de produtos perigosos",
+      "4930-2/04 – Transporte de mudanças"
+    ],
+    "tipos_documentos_aceitos": {
+      "declaracao_anual_simei": {
+        "calculo_renda": "Receita bruta total ÷ número de meses apurados",
+        "numero_recibo": "Obrigatório",
+        "periodo": "Pode ser inferior a 12 meses"
+      },
+      "relacao_faturamento_mei": {
+        "ultrapassagem_limite": "Não reprovar",
+        "assinatura": "Obrigatória do representante",
+        "cnpj_mais_12_meses": "Dividir sempre por 12 meses",
+        "cnpj_menos_12_meses": "Dividir pelos meses informados ou ativos"
+      },
+      "previsao_faturamento_mei": {
+        "calculo": "Considerar apenas meses previstos ou somar com meses efetivos, conforme documento",
+        "assinatura": "Obrigatória do representante"
+      },
+      "declaracao_faturamento_mei": {
+        "assinatura": "Obrigatória do representante"
+      }
+    },
+    "observacoes_importantes": [
+      "Sempre validar o período utilizado para cálculo da renda",
+      "Utilizar divisão proporcional quando o CNPJ tiver menos de 12 meses",
+      "Documentos de MEI não exigem assinatura de contador"
+    ]
+  },
+
+  "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FMEI%7C2f9d71c5-c488-47a9-8937-ed53e30396a6%2F%29&wdorigin=NavigationUrl"
+}
+

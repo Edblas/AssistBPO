@@ -1,0 +1,25 @@
+{
+  "id": "condominios_edificios",
+  "tema": "Renda PJ",
+  "documento": "Condomínios Edificios",
+
+  "pode_aceitar": true,
+  "condicao": "Condomínio edilício com documento de período fechado que comprove receitas reais do condomínio",
+
+  "acao_analista": [
+    "Confirmar a assinatura do documento seguindo a ordem de aceitação: Contador, Representante legal da empresa administradora ou Síndico",
+    "No caso de assinatura do síndico, confirmar mandato válido e vínculo do condomínio na plataforma",
+    "Validar que o documento reflete receitas reais do condomínio, e não valores pagos individualmente por moradores",
+    "Conferir que, se o faturamento for emitido por empresa terceira (administradora), o relacionamento esteja registrado na plataforma de atendimento",
+    "Confirmar que o período do documento está claramente definido e corresponde a período fechado",
+    "Registrar o tipo de renda como Declaração de Faturamento"
+  ],
+
+  "resposta_devolucao": "Documento de condomínio edilício analisado e renda considerada conforme regras de declaração de faturamento.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FCondom%C3%ADnios%7C%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}
+

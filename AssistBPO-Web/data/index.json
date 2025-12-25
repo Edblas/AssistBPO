@@ -1,0 +1,92 @@
+{
+  "renda_pj": {
+    "associacao privada": "associacao_privada_declaracao_faturamento",
+    "associacao_privada_declaracao de faturamento": "associacao_privada_declaracao_faturamento",
+
+    "cartorios": "cartorios_irpf_e_documentos_oficiais",
+    "cartorio irpf": "cartorios_irpf_e_documentos_oficiais",
+    "irpf cartorio": "cartorios_irpf_e_documentos_oficiais",
+    "cartorios_irpf_e_documentos_oficiais": "cartorios_irpf_e_documentos_oficiais",
+    
+
+    "cnpj baixado": "cnpj_baixado",
+    "cnpj encerrado": "cnpj_baixado",
+
+    "condominios": "condominios_edificios",
+    "condominios edificios": "condominios_edificios",
+
+    "consulta crc": "consulta_crc",
+    "crc contador": "consulta_crc",
+
+    "consulta opcao simples nacional": "consulta_opcao_simples_nacional",
+    "opcao simples nacional": "consulta_opcao_simples_nacional",
+    "simples nacional aceito": "consulta_opcao_simples_nacional",
+    "simples nacional": "consulta_opcao_simples_nacional",
+
+    "declaracao de faturamento": "declaracao_de_faturamento",
+    "declaração de faturamento": "declaracao_de_faturamento",
+    "declaração faturamento": "declaracao_de_faturamento",
+
+    "desenquadramento simples nacional": "desenquadramento_simples_nacional",
+
+    "diferenca balanco dre": "diferenca_dre_e_balanco_patrimonial",
+    "diferenca dre e balanco patrimonial": "diferenca_dre_e_balanco_patrimonial",
+    "diferenca entre dre e balanco":"diferenca_dre_e_balanco_patrimonial",
+
+    "dre": "dre_demonstracao_resultado_exercicio",
+    "demonstracao do resultado": "dre_demonstracao_resultado_exercicio",
+    "demonstracao resultado exercicio": "dre_demonstracao_resultado_exercicio",
+    "dre sped": "dre_demonstracao_resultado_exercicio",
+    "dre simples nacional": "dre_demonstracao_resultado_exercicio",
+
+    "dsp": "dsp_demonstracao_sobras_perdas",
+    "demonstracao de sobras": "dsp_demonstracao_sobras_perdas",
+    "demonstracao de sobras ou perdas": "dsp_demonstracao_sobras_perdas",
+    "dsp cooperativa": "dsp_demonstracao_sobras_perdas",
+    "dsp associacao": "dsp_demonstracao_sobras_perdas",
+
+    "ecf": "ecf_ecd_escrituracao_contabil",
+    "ecd": "ecf_ecd_escrituracao_contabil",
+    "sped": "ecf_ecd_escrituracao_contabil",
+    "escrituracao contabil": "ecf_ecd_escrituracao_contabil",
+    "ecf ecd": "ecf_ecd_escrituracao_contabil",
+
+    "empresa sem faturamento": "inatividade_ou_faturamento_zerado",
+    "inatividade": "inatividade_ou_faturamento_zerado",
+    "faturamento zerado": "inatividade_ou_faturamento_zerado",
+
+    "faturamento filial": "faturamento_para_filial",
+    "faturamento para filial": "faturamento_para_filial",
+
+    "faturamento sicoob": "renda_pj_faturamento_sicoob",
+    "sicoob faturamento": "renda_pj_faturamento_sicoob",
+
+    "mei": "mei_microempreendedor_individual",
+    "microempreendedor individual": "mei_microempreendedor_individual",
+    "simei": "mei_microempreendedor_individual",
+    "faturamento mei": "mei_microempreendedor_individual",
+    "declaracao simei": "mei_microempreendedor_individual",
+
+    "nao possui faturamento": "nao_possui_faturamento",
+    "sem faturamento": "nao_possui_faturamento",
+
+    "notas fiscais pj": "renda_pj_notas_fiscais",
+    "regras notas fiscais": "renda_pj_notas_fiscais",
+    "notas pj": "renda_pj_notas_fiscais",
+
+    "prefeituras": "renda_pj_prefeituras",
+    "entes publicos": "renda_pj_prefeituras",
+
+    "previsao de faturamento": "renda_pj_previsao_faturamento",
+    "previsao faturamento": "renda_pj_previsao_faturamento",
+
+    "serasa experian": "renda_pj_serasa_experian",
+    "consulta serasa": "renda_pj_serasa_experian",
+
+    "simples nacional pgdas": "simples_nacional_pgdas",
+    "pgdas": "simples_nacional_pgdas",
+
+    "tipos de renda": "tipos_renda",
+    "tipos renda": "tipos_renda"
+  }
+}

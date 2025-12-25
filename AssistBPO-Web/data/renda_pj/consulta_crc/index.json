@@ -1,0 +1,23 @@
+{
+  "id":"consulta_crc",
+  "tema":"Renda PJ",
+  "documento":"Consulta CRC",
+
+  "pode_aceitar": true,
+  "condicao": "Quando o CRC comprova a habilitação do contador responsável pelo documento de faturamento",
+
+  "acao_analista": [
+    "Verificar se o número do CRC está presente no documento de faturamento",
+    "Caso o número do CRC não conste, confirmar se a consulta oficial do CRC foi anexada",
+    "Conferir compatibilidade entre os dados do documento e da consulta do CRC (nome, CPF ou CNPJ, registro)",
+    "Reprovar o fluxo caso a consulta não esteja anexada ou haja dados divergentes ou incoerentes"
+  ],
+
+  "resposta_devolucao": "Consulta CRC analisada e validação do contador confirmada, permitindo prosseguir com a análise do documento de faturamento.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FConsulta%20CRC%7C4a2b52a8-8518-4fd2-89da-bd841364fa80%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}
+

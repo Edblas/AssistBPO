@@ -1,0 +1,25 @@
+[
+  {
+    "id": "renda_pj_serasa_experian",
+    "tema": "Renda PJ",
+    "fluxo": "Serasa Experien",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar se o documento do Serasa Experian está dentro do prazo de validade de 90 dias",
+      "Utilizar exclusivamente o valor informado no campo 'Faturamento Estimado'",
+      "Confirmar que o faturamento informado é anual",
+      "Verificar a data de abertura da empresa",
+      "Calcular a renda dividindo o faturamento anual por 12 meses ou pelo número de meses ativos, quando aplicável",
+      "Classificar o tipo de renda como Declaração de Faturamento"
+    ],
+    "resposta_devolucao": "Renda aceita com base no documento de faturamento emitido pelo Serasa Experian.",
+    "manual": {
+      "tipo_renda": "Declaração de Faturamento",
+      "prazo_validade": "90 dias",
+      "regra_calculo": "Faturamento estimado anual ÷ 12 meses ou ÷ meses ativos",
+      "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FSerasa%20Experien%7Ca950c450-e3e8-4ccf-abb2-e67e5ecbb591%2F%29&wdorigin=NavigationUrl"
+    }
+  }
+]
+
+

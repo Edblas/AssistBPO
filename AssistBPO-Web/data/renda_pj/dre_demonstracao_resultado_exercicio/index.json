@@ -1,0 +1,25 @@
+{
+  "id": "dre_demonstracao_resultado_exercicio",
+  "tema": "Renda PJ",
+  "documento": "DRE - Demonstração do Resultado do Exercicio",
+
+  "pode_aceitar": true,
+  "condicao": "Aceitar conforme faturamento anual da empresa e opção pelo Simples Nacional, observando a obrigatoriedade de SPED quando aplicável",
+
+  "acao_analista": [
+    "Confirmar a situação da empresa quanto à opção pelo Simples Nacional",
+    "Verificar o faturamento anual da empresa",
+    "Para empresa optante do Simples Nacional com faturamento anual superior a R$ 1.000.000,00, aceitar somente DRE emitido via SPED (ECD); DRE elaborado apenas pelo contador não é válido",
+    "Validar o recibo de entrega do SPED (ECD), bem como as assinaturas do contador e do representante legal",
+    "Verificar se o DRE apresentado corresponde a período fechado",
+    "Calcular a renda proporcionalmente ao período apresentado no DRE",
+    "Registrar o tipo de renda como Faturamento quando houver recibo SPED ou como Declaração de Faturamento quando não houver, se permitido pelas regras"
+  ],
+
+  "resposta_devolucao": "Documento aceito como DRE, com renda considerada conforme regras do SPED e limites de faturamento aplicáveis ao Simples Nacional.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d9}",
+    "link_resposta": ""
+  }
+}

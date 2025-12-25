@@ -1,0 +1,42 @@
+{
+  "id": "dsp_demonstracao_sobras_perdas",
+  "tema": "Renda PJ",
+  "documento": "DSP - Demonstração de Sobras ou Perdas",
+
+  "pode_aceitar": true,
+
+  "condicao": "Aceitar apenas quando referente a cooperativas, associações ou entidades sem fins lucrativos e desde que seja de período fiscal fechado",
+
+  "acao_analista": [
+    "Confirmar que a entidade é cooperativa, associação ou entidade sem fins lucrativos",
+    "Verificar a situação da entidade quanto à opção pelo Simples Nacional",
+    "Conferir se a DSP está completa, legível e referente a período fechado (último ano fiscal completo)",
+    "Validar as assinaturas do documento, sendo aceitas: contador e representante legal; apenas representante legal; ou síndico com mandato vigente",
+    "Confirmar a autenticidade do documento e a coerência dos valores apresentados",
+    "Verificar a existência de recibo de entrega quando a DSP estiver integrada à ECF",
+    "Identificar a Receita Bruta apresentada no documento",
+    "Calcular a renda média mensal dividindo a Receita Bruta pelo número de meses do exercício",
+    "Classificar o tipo de renda conforme o regime tributário e a existência de recibo de entrega"
+  ],
+
+  "resposta_devolucao": "Documento de DSP analisado e renda considerada conforme regime tributário da entidade e período fiscal apresentado.",
+
+  "manual": {
+    "descricao": "A DSP (Demonstração de Sobras ou Perdas) é o demonstrativo contábil equivalente à DRE para cooperativas, associações e entidades sem fins lucrativos.",
+    "regras_principais": [
+      "Sobras não se confundem com lucro, podendo ser distribuídas ou reinvestidas conforme estatuto",
+      "Assinaturas válidas: contador e representante legal; apenas representante legal; ou síndico com mandato vigente",
+      "Período obrigatório: último ano fiscal completo; não aceitar documentos referentes ao ano corrente",
+      "Quando integrada à ECF, a existência de recibo de entrega influencia a classificação do tipo de renda",
+      "O documento deve apresentar valores coerentes, sem indícios de alteração ou inconsistência",
+      "Cálculo da renda média mensal: Receita Bruta dividida pelo número de meses do exercício"
+    ],
+    "classificacao_renda": {
+      "optante_simples": "Declaração de Faturamento",
+      "nao_optante_com_recibo": "Faturamento",
+      "nao_optante_sem_recibo": "Declaração de Faturamento"
+    }
+  },
+
+  "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FDSP%7C1b6d4ced-899c-4da9-b8ae-fe5ee4545071%2F%29&wdorigin=NavigationUrl"
+}

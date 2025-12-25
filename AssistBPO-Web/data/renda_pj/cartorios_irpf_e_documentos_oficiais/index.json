@@ -1,0 +1,26 @@
+{
+  "id": "cartorios_irpf_e_documentos_oficiais",
+  "tema": "Renda PJ",
+  "documento": "Cartórios IRPF do Titular de Cartório e Documentos Oficiais",
+
+  "pode_aceitar": true,
+  "condicao": "Titular de Cartório com IRPF de ano-calendário fechado ou empresa de cartório com documentos oficiais de faturamento",
+
+  "acao_analista": [
+    "Confirmar que o declarante é Titular de Cartório (para IRPF) ou que se trata de empresa de cartório (para documentos oficiais)",
+    "Verificar que o IRPF ou documento oficial é referente a ano-calendário fechado",
+    "Conferir recibo de entrega do IRPF (obrigatório) e número do protocolo",
+    "Validar a ocupação principal como Titular de Cartório e natureza da ocupação como profissional liberal ou autônomo",
+    "Conferir identificação do contribuinte: nome e CPF",
+    "Utilizar o valor da coluna 'Trabalho Não Assalariado' para cálculo da renda (valor anual ÷ 12 meses)",
+    "Para documentos da empresa de cartório: confirmar origem oficial, verificar período fechado e valores de receita ou faturamento",
+    "Dispensar assinatura quando o documento for oficial e emitido por órgão ou sistema reconhecido"
+  ],
+
+  "resposta_devolucao": "Documento de cartório analisado e renda considerada conforme IRPF ou documento oficial da atividade, seguindo regras de validação.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FCart%C3%B3rios%7Cad65a1e5-063f-43e0-a74d-8b3cb6a43e8a%2F%29&wdorigin=NavigationUrl",
+    "link_resposta": ""
+  }
+}

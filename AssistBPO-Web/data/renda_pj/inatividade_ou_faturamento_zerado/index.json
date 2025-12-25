@@ -1,0 +1,23 @@
+{
+  "id": "inatividade_ou_faturamento_zerado",
+  "tema": "Renda PJ",
+  "documento": "Comprovacao de Inatividade ou Faturamento Zerado",
+
+  "pode_aceitar": true,
+  "condicao": "Empresa sem faturamento no período, comprovado por documentos oficiais ou declarações válidas",
+
+  "acao_analista": [
+    "Verificar o tipo de documento apresentado: Declaração de Inatividade, Declaração de Faturamento Zerado ou Extrato do Simples Nacional Zerado",
+    "Confirmar assinaturas quando obrigatórias (Declaração de Inatividade ou Declaração de Faturamento Zerado)",
+    "Confirmar que o período de inatividade ou faturamento zerado está claramente definido",
+    "Caso seja apresentado Extrato do Simples Nacional Zerado juntamente com Previsão de Faturamento, dispensar a Declaração de Inatividade"
+  ],
+
+  "resposta_devolucao": "Documento de inatividade ou faturamento zerado aceito conforme regras vigentes.",
+
+  "manual": {
+    "link_fluxo": "",
+    "link_resposta": ""
+  }
+}
+
