@@ -22,6 +22,25 @@ public class ConsultaController {
 
     @PostConstruct
     public void init() {
+        System.out.println("========================================");
+        System.out.println("🔍 DEBUG INICIADO - Procurando pasta data");
+        System.out.println("========================================");
+        
+        // DEBUG: Mostre diretório atual
+        Path currentDir = Paths.get(".").toAbsolutePath();
+        System.out.println("📂 Diretório atual: " + currentDir);
+        
+        // DEBUG: Liste conteúdo
+        System.out.println("📋 Conteúdo do diretório atual:");
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(currentDir)) {
+            for (Path file : stream) {
+                System.out.println("   - " + file.getFileName() + 
+                                 (Files.isDirectory(file) ? " (DIR)" : " (FILE)"));
+            }
+        } catch (Exception e) {
+            System.err.println("   ❌ Erro ao listar: " + e.getMessage());
+        }
+        
         System.out.println("🔍 Iniciando busca pela pasta data...");
         dataRoot = resolveDataDir();
         
