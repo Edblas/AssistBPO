@@ -73,7 +73,7 @@ export default function App() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:8080/api/consulta', {
+      const res = await fetch('https://assistbpo-backend.onrender.com/api/consulta', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pergunta: input })
