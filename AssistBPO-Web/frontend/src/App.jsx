@@ -146,7 +146,7 @@ export default function App() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      text: 'Olá! Bem-vindo ao AssistBPO.\n\nDigite sua pergunta e eu te ajudo.'
+      text: 'Olá! Seja Bem-vindo!\n\nDigite sua pergunta e eu te ajudo.'
     }
   ])
   const [input, setInput] = useState('')
@@ -185,7 +185,7 @@ export default function App() {
     setLoading(true)
 
     try {
-      const res = await fetch('https://assistbpo-backend.onrender.com/api/consulta', {
+      const res = await fetch('https://assistbpo-backend.onrender.com/api', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pergunta: input })
@@ -220,8 +220,8 @@ export default function App() {
       {/* HEADER FIXO */}
       <header className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-800 border-b z-40">
         <div className="max-w-3xl mx-auto h-full px-4 flex flex-col justify-center">
-          <h1 className="text-xl font-bold">AssistBPO Chat</h1>
-          <p className="text-xs text-gray-500">Respostas baseadas nos manuais</p>
+          <h1 className="text-xl font-bold">Jarvis</h1>
+          <p className="text-xs text-gray-500">AssistBPO Chat-Respostas baseadas nos manuais</p>
         </div>
       </header>
 
