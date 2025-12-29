@@ -1,0 +1,229 @@
+[
+  {
+    "id": "RPJ-001",
+    "tema": "Renda PJ",
+    "fluxo": "Associação Privada – Declaração de Faturamento",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Confirmar a natureza jurídica da entidade como Associação Privada (CNPJ 399-9)",
+      "Validar se os responsáveis pela declaração são Presidente ou Tesoureiro autorizado",
+      "Analisar o documento conforme regras de Declaração de Faturamento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-002",
+    "tema": "Renda PJ",
+    "fluxo": "Cartórios – Comprovação de Faturamento",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar se o cartório está ativo e regular",
+      "Conferir se a declaração é assinada pelo responsável",
+      "Validar período de faturamento correspondente"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-003",
+    "tema": "Renda PJ",
+    "fluxo": "CNPJ Baixado – Validação",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar status do CNPJ na Receita Federal",
+      "Conferir se existe declaração recente de faturamento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-004",
+    "tema": "Renda PJ",
+    "fluxo": "Condomínios e Edifícios – Declaração de Faturamento",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Validar se a administração do condomínio está ativa",
+      "Conferir documentos assinados pelo síndico ou responsável legal"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-005",
+    "tema": "Renda PJ",
+    "fluxo": "Consulta CRC – Contabilidade",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar registro CRC do contador responsável",
+      "Confirmar assinatura do contador no documento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-006",
+    "tema": "Renda PJ",
+    "fluxo": "Consulta Opção Simples Nacional",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar se a empresa é optante pelo Simples Nacional",
+      "Caso faturamento >1 milhão, aceitar apenas DRE com Sped"
+    ],
+    "resposta_devolucao": "Pode aceitar conforme regras do Simples Nacional"
+  },
+  {
+    "id": "RPJ-007",
+    "tema": "Renda PJ",
+    "fluxo": "Declaração de Faturamento – PJ",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Validar assinatura do responsável legal",
+      "Conferir se o período de faturamento corresponde ao solicitado",
+      "Confirmar autenticidade do documento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-008",
+    "tema": "Renda PJ",
+    "fluxo": "Diferença Balanço DRE",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Comparar valores do DRE com balanço patrimonial",
+      "Solicitar explicações para diferenças significativas"
+    ],
+    "resposta_devolucao": "Pode aceitar se divergências forem justificadas"
+  },
+  {
+    "id": "RPJ-009",
+    "tema": "Renda PJ",
+    "fluxo": "DRE – Demonstração do Resultado do Exercício",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar assinatura do contador",
+      "Conferir período de faturamento",
+      "Validar se é DRE Sped para empresas optantes do Simples Nacional com faturamento >1 milhão"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-010",
+    "tema": "Renda PJ",
+    "fluxo": "DSP – Demonstração de Sobras ou Perdas",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Validar autenticidade da DSP",
+      "Conferir assinatura do responsável",
+      "Verificar período correspondente ao faturamento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-011",
+    "tema": "Renda PJ",
+    "fluxo": "ECF/ESCRITURAÇÃO CONTÁBIL",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar se a empresa possui ECF ou ECD",
+      "Conferir período fiscal correspondente",
+      "Validar assinatura do contador"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-012",
+    "tema": "Renda PJ",
+    "fluxo": "Empresa sem faturamento / Inatividade",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar inatividade no CNPJ",
+      "Confirmar ausência de faturamento recente"
+    ],
+    "resposta_devolucao": "Pode aceitar como inatividade ou faturamento zerado"
+  },
+  {
+    "id": "RPJ-013",
+    "tema": "Renda PJ",
+    "fluxo": "Faturamento Filial",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Confirmar faturamento informado pela matriz",
+      "Validar documentos de repasse entre filiais"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-014",
+    "tema": "Renda PJ",
+    "fluxo": "MEI / Microempreendedor Individual",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Validar inscrição do MEI",
+      "Conferir declaração de faturamento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-015",
+    "tema": "Renda PJ",
+    "fluxo": "Notas Fiscais PJ",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Conferir emissão correta das notas fiscais",
+      "Verificar se a empresa pode emitir NF conforme regime tributário"
+    ],
+    "resposta_devolucao": "Pode aceitar conforme regras do Simples Nacional ou MEI"
+  },
+  {
+    "id": "RPJ-016",
+    "tema": "Renda PJ",
+    "fluxo": "Serasa Experian",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar validade de 90 dias",
+      "Usar apenas o campo Faturamento Estimado"
+    ],
+    "resposta_devolucao": "Renda aceita com base no Serasa Experian"
+  },
+  {
+    "id": "RPJ-017",
+    "tema": "Renda PJ",
+    "fluxo": "Prefeituras / Entes Públicos",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Conferir declaração oficial da prefeitura ou ente público",
+      "Validar período e autenticidade do documento"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-018",
+    "tema": "Renda PJ",
+    "fluxo": "Previsão de Faturamento",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Verificar consistência da previsão com histórico de faturamento",
+      "Confirmar assinaturas e validação contábil"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-019",
+    "tema": "Renda PJ",
+    "fluxo": "Simples Nacional – PGDAS",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Validar informações do PGDAS",
+      "Conferir período de apuração",
+      "Verificar compatibilidade com faturamento informado"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  },
+  {
+    "id": "RPJ-020",
+    "tema": "Renda PJ",
+    "fluxo": "Tipos de Renda",
+    "pode_aceitar": true,
+    "acao_analista": [
+      "Classificar corretamente o tipo de renda",
+      "Verificar documentação correspondente"
+    ],
+    "resposta_devolucao": "Pode aceitar"
+  }
+]

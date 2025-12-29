@@ -1,0 +1,36 @@
+{
+  "id": "renda_pj_faturamento_filial",
+  "tema": "Renda PJ",
+  "fluxo": "Faturamento para Filial",
+  "pode_aceitar": true,
+  "condicao": "Aceitar faturamento segregado ou consolidado, conforme CNPJ e período da filial",
+  "acoes_analista": [
+    "Verificar se o faturamento apresentado é segregado (apenas da filial) ou consolidado (matriz + filial)",
+    "Conferir o CNPJ nos documentos para aplicar o enquadramento correto: filial ou matriz",
+    "Validar o período de faturamento: filial com menos de 12 meses → dividir pelo número de meses efetivos",
+    "Filial com 12 meses ou mais → dividir por 12 meses",
+    "Aceitar PGDAS da matriz para filiais, desde que o CNPJ da filial seja compatível e o regime tributário seja conferido",
+    "Registrar o tipo de renda conforme o documento apresentado: PGDAS, DRE, Extrato do Simples Nacional ou Nota Fiscal"
+  ],
+  "resposta_devolucao": "Documento de faturamento de filial analisado e renda considerada conforme regras do regime e tipo de apresentação (segregado ou consolidado).",
+  "manual": {
+    "cenarios": {
+      "faturamento_segregado": "A filial pode apresentar apenas o seu próprio faturamento",
+      "faturamento_consolidado": "Matriz ou filial podem apresentar o faturamento total consolidado"
+    },
+    "documentos": [
+      "Documentos emitidos pela filial → enquadramento da filial",
+      "Documentos emitidos pela matriz → enquadramento da matriz"
+    ],
+    "observacoes": [
+      "Mesmo que matriz e filial compartilhem o mesmo CNPJ raiz e regime tributário, podem existir diferenças de obrigações fiscais estaduais ou municipais",
+      "PGDAS da matriz pode ser aceito para filiais, desde que o CNPJ e o regime tributário sejam compatíveis"
+    ],
+    "links": [
+      {
+        "titulo": "Manual Renda PJ  Meta",
+        "url": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view"
+      }
+    ]
+  }
+}

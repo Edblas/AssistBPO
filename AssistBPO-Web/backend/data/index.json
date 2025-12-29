@@ -17,6 +17,7 @@
 
     "consulta crc": "consulta_crc",
     "crc contador": "consulta_crc",
+    "crc": "consulta_crc",
 
     "consulta opcao simples nacional": "consulta_opcao_simples_nacional",
     "opcao simples nacional": "consulta_opcao_simples_nacional",
@@ -25,7 +26,7 @@
 
     "declaracao de faturamento": "declaracao_de_faturamento",
     "declaração de faturamento": "declaracao_de_faturamento",
-    "declaração faturamento": "declaracao_de_faturamento",
+    "declaracao faturamento": "declaracao_de_faturamento",
 
     "desenquadramento simples nacional": "desenquadramento_simples_nacional",
 
@@ -55,7 +56,7 @@
     "inatividade": "inatividade_ou_faturamento_zerado",
     "faturamento zerado": "inatividade_ou_faturamento_zerado",
 
-    "faturamento filial": "faturamento_para_filial",
+    "faturamento filial": "faturamento_filial",
     "faturamento para filial": "faturamento_para_filial",
 
     "faturamento sicoob": "renda_pj_faturamento_sicoob",
@@ -76,11 +77,12 @@
 
     "prefeituras": "renda_pj_prefeituras",
     "entes publicos": "renda_pj_prefeituras",
+    "prefeitura": "renda_pj_prefeituras",
 
     "previsao de faturamento": "renda_pj_previsao_faturamento",
     "previsao faturamento": "renda_pj_previsao_faturamento",
 
-    "serasa experian": "renda_pj_serasa_experian",
+    "serasa pj": "renda_pj_serasa_experian",
     "consulta serasa": "renda_pj_serasa_experian",
 
     "simples nacional pgdas": "simples_nacional_pgdas",

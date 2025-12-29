@@ -1,0 +1,19 @@
+{
+  "id": "renda_pj_prefeituras",
+  "tema": "Renda PJ",
+  "documento": "Prefeituras e Entes Publicos",
+  "pode_aceitar": true,
+  "condicao": "Aceitar documentos emitidos por fonte oficial da Prefeitura como comprovação de faturamento, desde que o período apresentado contemple 12 meses. Documentos com apenas 1 mês devem ser reprovados.",
+  "acao_analista": [
+    "Conferir se o documento foi emitido por site oficial da Prefeitura",
+    "Validar se o período apresentado contempla 12 meses de informações",
+    "Reprovar documentos que apresentem apenas 1 mês de informações",
+    "Registrar o tipo de renda como Faturamento"
+  ],
+  "resposta_devolucao": "Documento de Prefeitura aceito como comprovação de faturamento, conforme demonstrativos contábeis públicos.",
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}",
+    "link_resposta": ""
+  }
+}
+

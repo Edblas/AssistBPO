@@ -1,0 +1,48 @@
+{
+  "id": "renda_pj_notas_fiscais",
+  "tema": "Renda PJ",
+  "documento": "Notas Fiscais Comprovação de Faturamento",
+
+  "pode_aceitar": true,
+  "condicao": "Aceitação varia conforme regime tributário e tipo de empresa",
+
+  "acao_analista": [
+    "Verificar a situação da empresa quanto ao Simples Nacional e MEI",
+    "Optante pelo Simples Nacional (exceto MEI): não aceitar nota fiscal",
+    "MEI: aceitar nota fiscal como Declaração de Faturamento",
+    "Empresa não optante pelo Simples Nacional: aceitar nota fiscal como Declaração de Faturamento",
+    "Empresa recém-constituída com menos de 12 meses: não aceitar nota fiscal; utilizar Previsão de Faturamento assinada pelo contador e representante (exceto MEI)",
+    "Conferir assinaturas obrigatórias: contador e representante legal (MEI pode assinar sozinho)",
+    "Validar que a nota fiscal contenha CNPJ do emitente, data de emissão, valor da operação e descrição clara",
+    "Reprovar notas ilegíveis, incompletas ou sem identificação da operação",
+    "Para empresas não optantes pelo Simples Nacional, dividir o valor das notas pelo período de até 12 meses, quando aplicável"
+  ],
+
+  "resposta_devolucao": "Notas fiscais analisadas e renda considerada como Declaração de Faturamento, conforme regras do fluxo.",
+
+  "manual": {
+    "tipo_renda": "Declaração de Faturamento",
+
+    "situacoes": [
+      {
+        "situacao_empresa": "Optante pelo Simples Nacional (exceto MEI)",
+        "aceita_nota_fiscal": false,
+        "observacao": "Aceitos apenas DAS, PGDAS-D e Extrato do Simples Nacional"
+      },
+      {
+        "situacao_empresa": "MEI",
+        "aceita_nota_fiscal": true,
+        "observacao": "Nota fiscal aceita como Declaração de Faturamento"
+      },
+      {
+        "situacao_empresa": "Empresa não optante pelo Simples Nacional",
+        "aceita_nota_fiscal": true,
+        "observacao": "Pode ser uma nota ou conjunto de até 12 notas, com divisão do valor"
+      }
+    ]
+  },
+
+  "manual_links": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FNotas%20fiscais%20%2B%20Regras%7C1f8454d3-6b4e-4327-8971-3cf5b2a68a5f%2F%29&wdorigin=NavigationUrl"
+  }
+}

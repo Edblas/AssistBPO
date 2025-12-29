@@ -1,0 +1,30 @@
+{
+  "id": "RENDA_PJ_NAO_POSSUI_FATURAMENTO",
+  "tema": "Renda PJ",
+  "fluxo": "Não Possui Faturamento",
+  "pode_aceitar": true,
+
+  "acao_analista": [
+    "Confirmar que o documento apresenta valor 0,00 ou 0,01, ou que o associado declarou que não possui faturamento ou se recusou a informar",
+    "Verificar a Consulta de Opção pelo Simples Nacional na chave correta, mesmo quando o valor é 0,00 ou 0,01",
+    "Validar o porte da empresa na Receita Federal: ME (Microempresa) ou EPP (Empresa de Pequeno Porte)",
+    "Para empresas recém-constituídas, conferir a data de abertura e se o documento indica claramente: 'Empresa recém-constituída', Faturamento: 0,00, Renda variável"
+  ],
+
+  "resposta_devolucao": "Renda cadastrada como não possui faturamento, conforme declaração apresentada e regras vigentes.",
+
+  "manual": {
+    "tipo_renda": "Não possui faturamento / Recusou-se a informar o faturamento",
+    "quando_utilizar": [
+      "Documento apresenta valor 0,00 ou 0,01",
+      "Associado declara que não possui faturamento",
+      "Associado se recusa a informar faturamento"
+    ],
+    "regras_simples_nacional": [
+      "Consulta de opção pelo Simples Nacional obrigatória",
+      "Opção deve estar corretamente marcada como Sim ou Não"
+    ],
+    "verificacao_porte_empresa": ["ME", "EPP"],
+    "observacao_importante": "Declaração de não possuir faturamento é aceita como tipo de renda válido, desde que documentação coerente, consulta de opção pelo Simples anexada e porte da empresa validado"
+  }
+}

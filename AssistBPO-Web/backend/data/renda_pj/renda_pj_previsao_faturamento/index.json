@@ -1,0 +1,23 @@
+{
+  "id": "renda_pj_previsao_faturamento",
+  "tema": "Renda PJ",
+  "documento": "Previsao de Faturamento",
+
+  "pode_aceitar": true,
+  "condicao": "Aceitar para empresas abertas ou reativadas há menos de 1 ano, independentemente da opção pelo Simples Nacional, observando as regras de assinatura previstas no CCI 1.186/2025.",
+
+  "acao_analista": [
+    "Confirmar o tipo de empresa e o porte",
+    "Validar se a empresa foi aberta ou reativada há menos de 1 ano",
+    "Validar as assinaturas: representante da empresa com gerente da cooperativa ou contador; para MEI, aceitar apenas a assinatura do representante da empresa",
+    "Confirmar que a assinatura do gerente possui carimbo com indicação do cargo",
+    "Registrar o tipo de renda como Previsão de Faturamento"
+  ],
+
+  "resposta_devolucao": "Documento aceito como previsão de faturamento, conforme regras de assinatura e validade do CCI 1.186/2025.",
+
+  "manual": {
+    "link_fluxo": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}",
+    "link_resposta": ""
+  }
+}

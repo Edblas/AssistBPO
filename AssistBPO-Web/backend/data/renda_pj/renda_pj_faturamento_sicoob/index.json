@@ -1,0 +1,35 @@
+{
+  "id": "renda_pj_faturamento_sicoob",
+  "tema": "Renda PJ",
+  "documento": "Faturamento Emitido pelo Sicoob",
+
+  "pode_aceitar": true,
+
+  "condicao":"colocar informação correta depois",
+
+  "acao_analista": [
+    "Confirmar que o documento 'Consulta Receita Federal – Faturamento' foi emitido por meio de consulta oficial do Sicoob",
+    "Verificar o ano-calendário ao qual o documento se refere (sempre ano anterior à emissão)",
+    "Identificar a data de abertura da empresa",
+    "Verificar os meses em que a empresa esteve ativa no ano-calendário informado",
+    "Considerar a Receita Bruta Acumulada no Ano-Calendário (ex.: campo 1.3)",
+    "Calcular a renda média mensal dividindo a receita bruta anual pelo número de meses ativos",
+    "Reprovar períodos diferentes ou anteriores ao ano-calendário informado no documento"
+  ],
+
+  "resposta_devolucao": "Faturamento aceito com base na Consulta Receita Federal – Faturamento emitida pelo Sicoob.",
+
+  "manual": {
+    "descricao": "Documento emitido a partir de consulta oficial do Sicoob, com base em dados da Receita Federal, utilizado para comprovação de faturamento anual.",
+    "tipo_renda": "Faturamento",
+    "regras_importantes": [
+      "Documento sempre se refere a ano-calendário fechado",
+      "Não aceitar períodos anteriores ou divergentes do ano-calendário informado",
+      "A renda deve ser calculada com base apenas nos meses em que a empresa esteve ativa",
+      "Utilizar obrigatoriamente a Receita Bruta Acumulada no Ano-Calendário"
+    ]
+  },
+
+  "link": "https://grupometa-my.sharepoint.com/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc={c25ac0fa-50eb-4c80-a819-1cd9d982f327}&action=view&wd=target%28RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FFaturamento%20Sicoob%7Cd1ed72d9-8cb8-49f5-86cf-c6227f439f1e%2F%29&wdorigin=NavigationUrl"
+}
+

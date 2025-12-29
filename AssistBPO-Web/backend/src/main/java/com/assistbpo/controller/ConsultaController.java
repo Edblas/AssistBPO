@@ -25,32 +25,29 @@ public class ConsultaController {
         System.out.println("========================================");
         System.out.println("🔍 DEBUG INICIADO - Procurando pasta data");
         System.out.println("========================================");
-        
-        // DEBUG: Mostre diretório atual
+
         Path currentDir = Paths.get(".").toAbsolutePath();
         System.out.println("📂 Diretório atual: " + currentDir);
-        
-        // DEBUG: Liste conteúdo
+
         System.out.println("📋 Conteúdo do diretório atual:");
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(currentDir)) {
             for (Path file : stream) {
-                System.out.println("   - " + file.getFileName() + 
-                                 (Files.isDirectory(file) ? " (DIR)" : " (FILE)"));
+                System.out.println("   - " + file.getFileName() +
+                        (Files.isDirectory(file) ? " (DIR)" : " (FILE)"));
             }
         } catch (Exception e) {
             System.err.println("   ❌ Erro ao listar: " + e.getMessage());
         }
-        
+
         System.out.println("🔍 Iniciando busca pela pasta data...");
         dataRoot = resolveDataDir();
-        
+
         if (dataRoot == null) {
             System.err.println("❌ CRÍTICO: Pasta data não encontrada!");
-            System.err.println("   O backend não terá acesso aos dados.");
         } else {
             System.out.println("✅ DATA ROOT encontrado: " + dataRoot.toAbsolutePath());
         }
-        
+
         loadIndexMappings(dataRoot);
         System.out.println("📊 INDEX MAP carregado com " + rendaPjMap.size() + " entradas");
     }
@@ -84,7 +81,6 @@ public class ConsultaController {
 
         Map<String, Object> doc = loadDocBySlug(slug);
         if (doc == null) {
-            System.err.println("⚠️  Documento não encontrado para slug: " + slug);
             resp.put("resposta", respostaVazia());
             return resp;
         }
@@ -99,28 +95,11 @@ public class ConsultaController {
         rendaPjMap.clear();
 
         try {
-            if (root == null) {
-                System.err.println("❌ Não é possível carregar index: root é null");
-                return;
-            }
+            if (root == null) return;
 
-            System.out.println("📂 Procurando index.json em: " + root.toAbsolutePath());
             Path idx = root.resolve("index.json");
-            
-            if (!Files.exists(idx)) {
-                System.err.println("❌ Arquivo index.json não encontrado em: " + idx.toAbsolutePath());
-                System.err.println("   Conteúdo do diretório:");
-                try (DirectoryStream<Path> stream = Files.newDirectoryStream(root)) {
-                    for (Path file : stream) {
-                        System.err.println("   - " + file.getFileName());
-                    }
-                } catch (Exception e) {
-                    System.err.println("   (não foi possível listar diretório)");
-                }
-                return;
-            }
+            if (!Files.exists(idx)) return;
 
-            System.out.println("✅ index.json encontrado, carregando...");
             Map<?, ?> raw = mapper.readValue(
                     Files.readAllBytes(idx),
                     new TypeReference<Map<?, ?>>() {}
@@ -134,26 +113,31 @@ public class ConsultaController {
                             String.valueOf(e.getValue())
                     );
                 }
-                System.out.println("✅ " + map.size() + " mapeamentos carregados de renda_pj");
-            } else {
-                System.err.println("⚠️  Chave 'renda_pj' não encontrada ou não é um mapa no index.json");
             }
 
         } catch (Exception e) {
-            System.err.println("❌ Erro ao carregar index.json:");
             e.printStackTrace();
         }
     }
 
+    /* ======================== FIX AQUI ======================== */
+
     private String matchSlug(String pergunta) {
+
+        // match exato
         if (rendaPjMap.containsKey(pergunta)) {
             return rendaPjMap.get(pergunta);
         }
+
+        // match parcial nos dois sentidos
         for (Map.Entry<String, String> e : rendaPjMap.entrySet()) {
-            if (pergunta.contains(e.getKey())) {
+            String key = e.getKey();
+
+            if (pergunta.contains(key) || key.contains(pergunta)) {
                 return e.getValue();
             }
         }
+
         return null;
     }
 
@@ -161,46 +145,21 @@ public class ConsultaController {
 
     private Map<String, Object> loadDocBySlug(String slug) {
         try {
-            if (dataRoot == null) {
-                System.err.println("❌ dataRoot é null, não é possível carregar documento");
-                return null;
-            }
+            if (dataRoot == null) return null;
 
             Path p = dataRoot
                     .resolve("renda_pj")
                     .resolve(slug)
                     .resolve("index.json");
 
-            System.out.println("📄 Tentando carregar documento: " + p.toAbsolutePath());
+            if (!Files.exists(p)) return null;
 
-            if (!Files.exists(p)) {
-                System.err.println("❌ Documento não existe: " + p.toAbsolutePath());
-                
-                // Verifica se a pasta renda_pj existe
-                Path rendaPjDir = dataRoot.resolve("renda_pj");
-                if (!Files.exists(rendaPjDir)) {
-                    System.err.println("❌ Pasta renda_pj não existe em: " + rendaPjDir.toAbsolutePath());
-                } else {
-                    System.err.println("   Conteúdo de renda_pj:");
-                    try (DirectoryStream<Path> stream = Files.newDirectoryStream(rendaPjDir)) {
-                        for (Path file : stream) {
-                            System.err.println("   - " + file.getFileName());
-                        }
-                    } catch (Exception e) {
-                        System.err.println("   (não foi possível listar diretório)");
-                    }
-                }
-                return null;
-            }
-
-            System.out.println("✅ Documento encontrado, carregando...");
             return mapper.readValue(
                     Files.readAllBytes(p),
                     new TypeReference<Map<String, Object>>() {}
             );
 
         } catch (Exception e) {
-            System.err.println("❌ Erro ao carregar documento para slug '" + slug + "':");
             e.printStackTrace();
             return null;
         }
@@ -226,8 +185,8 @@ public class ConsultaController {
         }
 
         sb.append("Resposta de Devolução: ")
-          .append(v(doc, "resposta_devolucao"))
-          .append('\n');
+                .append(v(doc, "resposta_devolucao"))
+                .append('\n');
 
         Object manual = doc.get("manual");
         if (manual instanceof Map<?, ?> m) {
@@ -253,27 +212,17 @@ public class ConsultaController {
 
     private static Path resolveDataDir() {
         Path[] tries = {
-                Paths.get("data"),                      // Dentro de backend/
-                Paths.get("backend", "data"),           // Raiz do projeto local
-                Paths.get("../data"),                   // Um nível acima
-                Paths.get("AssistBPO-Web", "data"),     // Estrutura Render alternativa
-                Paths.get("..", "AssistBPO-Web", "data") // Outra alternativa
+                Paths.get("data"),
+                Paths.get("backend", "data"),
+                Paths.get("../data"),
+                Paths.get("AssistBPO-Web", "data"),
+                Paths.get("..", "AssistBPO-Web", "data")
         };
-        
+
         for (Path p : tries) {
-            System.out.println("   🔍 Tentando: " + p.toAbsolutePath());
             if (Files.exists(p) && Files.isDirectory(p)) {
-                System.out.println("   ✅ ENCONTRADO: " + p.toAbsolutePath());
                 return p;
-            } else {
-                System.out.println("   ❌ Não existe");
             }
-        }
-        
-        System.err.println("❌ Pasta data não encontrada em nenhum local!");
-        System.err.println("   Locais testados:");
-        for (Path p : tries) {
-            System.err.println("   - " + p.toAbsolutePath());
         }
         return null;
     }
