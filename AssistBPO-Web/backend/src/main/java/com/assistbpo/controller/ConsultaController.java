@@ -76,7 +76,13 @@ public class ConsultaController {
         sb.append("Tema: ").append(doc.getTema() != null ? doc.getTema() : "").append('\n');
         sb.append("Fluxo: ").append(doc.getFluxo() != null ? doc.getFluxo() : "").append('\n');
         sb.append("Pode Aceitar: ").append(doc.getPodeAceitar() != null ? doc.getPodeAceitar() : false).append('\n');
-        // sb.append("Condição: ").append(doc.getCondicao()).append('\n'); // Campo removido na entidade simplificada? Se precisar, adicionar.
+        if (doc.getCondicao() != null && !doc.getCondicao().isBlank()) {
+            sb.append("Condição: ").append(doc.getCondicao()).append('\n');
+        }
+
+        if (doc.getVideoExplicativo() != null && !doc.getVideoExplicativo().isBlank()) {
+            sb.append("Vídeo Explicativo: ").append(doc.getVideoExplicativo()).append('\n');
+        }
 
         sb.append("Ações do Analista:\n");
         if (doc.getAcaoAnalista() != null) {
@@ -85,24 +91,20 @@ public class ConsultaController {
             }
         }
 
-        // Novos campos: Modelos Aceitos e Não Aceitos
-        if (doc.getModelosAceitos() != null && !doc.getModelosAceitos().isEmpty()) {
-            sb.append("Modelos Aceitos:\n");
-            for (String link : doc.getModelosAceitos()) {
+        // Novos campos: Modelos Aceitos/Não Aceitos
+        if (doc.getModelosAceitosNaoAceitos() != null && !doc.getModelosAceitosNaoAceitos().isEmpty()) {
+            sb.append("Modelos Aceitos/Não Aceitos:\n");
+            for (String link : doc.getModelosAceitosNaoAceitos()) {
                 sb.append("- ").append(link).append('\n');
             }
         }
 
-        if (doc.getModelosNaoAceitos() != null && !doc.getModelosNaoAceitos().isEmpty()) {
-            sb.append("Modelos Não Aceitos:\n");
-            for (String link : doc.getModelosNaoAceitos()) {
-                sb.append("- ").append(link).append('\n');
+        sb.append("Resposta de Devolução:\n");
+        if (doc.getRespostasDevolucao() != null && !doc.getRespostasDevolucao().isEmpty()) {
+            for (String r : doc.getRespostasDevolucao()) {
+                sb.append(">>>").append(r).append('\n');
             }
         }
-
-        sb.append("Resposta de Devolução: ")
-                .append(doc.getRespostaDevolucao() != null ? doc.getRespostaDevolucao() : "")
-                .append('\n');
 
         sb.append("Fonte: ").append(doc.getManualLinkFluxo() != null ? doc.getManualLinkFluxo() : "").append('\n');
 

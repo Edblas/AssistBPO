@@ -35,6 +35,10 @@ public class KnowledgeDoc {
     @Column(name = "tema")
     private String tema;
 
+    @ManyToOne
+    @JoinColumn(name = "theme_id")
+    private Theme themeObj;
+
     @Column(name = "fluxo")
     private String fluxo; // nome do documento
 
@@ -44,6 +48,17 @@ public class KnowledgeDoc {
     @Column(name = "pode_aceitar")
     private Boolean podeAceitar;
 
+    @Column(name = "condicao", columnDefinition = "TEXT")
+    private String condicao;
+
+    @Column(name = "video_explicativo")
+    private String videoExplicativo;
+
+    @ElementCollection
+    @CollectionTable(name = "doc_keywords", joinColumns = @JoinColumn(name = "doc_id"))
+    @Column(name = "keyword")
+    private List<String> keywords;
+
     @ElementCollection
     @CollectionTable(name = "doc_acao_analista", joinColumns = @JoinColumn(name = "doc_id"))
     @Column(name = "acao")
@@ -52,15 +67,12 @@ public class KnowledgeDoc {
     @ElementCollection
     @CollectionTable(name = "doc_modelos_aceitos", joinColumns = @JoinColumn(name = "doc_id"))
     @Column(name = "link_pdf")
-    private List<String> modelosAceitos;
+    private List<String> modelosAceitosNaoAceitos;
 
     @ElementCollection
-    @CollectionTable(name = "doc_modelos_nao_aceitos", joinColumns = @JoinColumn(name = "doc_id"))
-    @Column(name = "link_pdf")
-    private List<String> modelosNaoAceitos;
-
-    @Column(name = "resposta_devolucao", columnDefinition = "TEXT")
-    private String respostaDevolucao;
+    @CollectionTable(name = "doc_respostas_devolucao", joinColumns = @JoinColumn(name = "doc_id"))
+    @Column(name = "resposta")
+    private List<String> respostasDevolucao;
 
     @Column(name = "manual_link_fluxo", columnDefinition = "TEXT")
     private String manualLinkFluxo;
@@ -77,14 +89,14 @@ public class KnowledgeDoc {
     // Construtor completo
     public KnowledgeDoc(String slug, String tema, String fluxo, String tipoRenda,
                         Boolean podeAceitar, List<String> acaoAnalista,
-                        String respostaDevolucao, String manualLinkFluxo, String manualLinkResposta) {
+                        List<String> respostasDevolucao, String manualLinkFluxo, String manualLinkResposta) {
         this.slug = slug;
         this.tema = tema;
         this.fluxo = fluxo;
         this.tipoRenda = tipoRenda;
         this.podeAceitar = podeAceitar;
         this.acaoAnalista = acaoAnalista;
-        this.respostaDevolucao = respostaDevolucao;
+        this.respostasDevolucao = respostasDevolucao;
         this.manualLinkFluxo = manualLinkFluxo;
         this.manualLinkResposta = manualLinkResposta;
         updateSearchableText();
@@ -94,8 +106,20 @@ public class KnowledgeDoc {
         String text = (tema != null ? tema : "") + " " +
                       (fluxo != null ? fluxo : "") + " " +
                       (tipoRenda != null ? tipoRenda : "") + " " +
-                      (acaoAnalista != null ? String.join(" ", acaoAnalista) : "");
+                      (condicao != null ? condicao : "") + " " +
+                      (keywords != null ? String.join(" ", keywords) : "") + " " +
+                      (acaoAnalista != null ? String.join(" ", acaoAnalista) : "") + " " +
+                      (modelosAceitosNaoAceitos != null ? String.join(" ", modelosAceitosNaoAceitos) : "") + " " +
+                      (respostasDevolucao != null ? String.join(" ", respostasDevolucao) : "");
         this.searchableText = normalize(text);
+    }
+
+    public Theme getThemeObj() {
+        return themeObj;
+    }
+
+    public void setThemeObj(Theme themeObj) {
+        this.themeObj = themeObj;
     }
 
     private static String normalize(String s) {
@@ -130,14 +154,18 @@ public class KnowledgeDoc {
     public void setTipoRenda(String tipoRenda) { this.tipoRenda = tipoRenda; }
     public Boolean getPodeAceitar() { return podeAceitar; }
     public void setPodeAceitar(Boolean podeAceitar) { this.podeAceitar = podeAceitar; }
+    public String getCondicao() { return condicao; }
+    public void setCondicao(String condicao) { this.condicao = condicao; }
+    public String getVideoExplicativo() { return videoExplicativo; }
+    public void setVideoExplicativo(String videoExplicativo) { this.videoExplicativo = videoExplicativo; }
+    public List<String> getKeywords() { return keywords; }
+    public void setKeywords(List<String> keywords) { this.keywords = keywords; }
     public List<String> getAcaoAnalista() { return acaoAnalista; }
     public void setAcaoAnalista(List<String> acaoAnalista) { this.acaoAnalista = acaoAnalista; }
-    public List<String> getModelosAceitos() { return modelosAceitos; }
-    public void setModelosAceitos(List<String> modelosAceitos) { this.modelosAceitos = modelosAceitos; }
-    public List<String> getModelosNaoAceitos() { return modelosNaoAceitos; }
-    public void setModelosNaoAceitos(List<String> modelosNaoAceitos) { this.modelosNaoAceitos = modelosNaoAceitos; }
-    public String getRespostaDevolucao() { return respostaDevolucao; }
-    public void setRespostaDevolucao(String respostaDevolucao) { this.respostaDevolucao = respostaDevolucao; }
+    public List<String> getModelosAceitosNaoAceitos() { return modelosAceitosNaoAceitos; }
+    public void setModelosAceitosNaoAceitos(List<String> modelosAceitosNaoAceitos) { this.modelosAceitosNaoAceitos = modelosAceitosNaoAceitos; }
+    public List<String> getRespostasDevolucao() { return respostasDevolucao; }
+    public void setRespostasDevolucao(List<String> respostasDevolucao) { this.respostasDevolucao = respostasDevolucao; }
     public String getManualLinkFluxo() { return manualLinkFluxo; }
     public void setManualLinkFluxo(String manualLinkFluxo) { this.manualLinkFluxo = manualLinkFluxo; }
     public String getManualLinkResposta() { return manualLinkResposta; }

@@ -21,11 +21,13 @@ import java.util.stream.Collectors;
 public class JsonToDatabaseMigrationService {
 
     private final KnowledgeDocRepository repository;
+    private final com.assistbpo.repository.ThemeRepository themeRepository;
     private final ObjectMapper mapper = new ObjectMapper();
     private Path jsonRoot;
 
-    public JsonToDatabaseMigrationService(KnowledgeDocRepository repository) {
+    public JsonToDatabaseMigrationService(KnowledgeDocRepository repository, com.assistbpo.repository.ThemeRepository themeRepository) {
         this.repository = repository;
+        this.themeRepository = themeRepository;
     }
 
     @PostConstruct
@@ -34,6 +36,7 @@ public class JsonToDatabaseMigrationService {
         // MODO DESENVOLVIMENTO: Limpar banco para recarregar JSONs atualizados
         System.out.println("♻ Limpando banco de dados para recarga completa...");
         repository.deleteAll();
+        themeRepository.deleteAll();
 
         System.out.println("🚀 Iniciando migração de JSON para Banco de Dados...");
         jsonRoot = resolveJsonDir();
@@ -75,15 +78,34 @@ public class JsonToDatabaseMigrationService {
                     String fluxo = getString(root, "fluxo", getString(root, "documento", ""));
                     String tipoRenda = getString(root, "tipoRenda", "");
                     Boolean podeAceitar = Boolean.valueOf(String.valueOf(root.getOrDefault("podeAceitar", "false")));
+                    List<String> keywords = extractList(root, "keywords", "keywords");
                     List<String> acaoAnalista = extractList(root, "acaoAnalista", "acao_analista");
-                    String respostaDevolucao = getString(root, "respostaDevolucao", getString(root, "resposta_devolucao", ""));
                     
+                    // Migração de Resposta de Devolução (String -> List)
+                    List<String> respostasDevolucao = new ArrayList<>();
+                    Object rawResp = mapHasKey(root, "respostaDevolucao", "resposta_devolucao");
+                    if (rawResp instanceof List<?>) {
+                         respostasDevolucao = ((List<?>) rawResp).stream().map(Object::toString).collect(Collectors.toList());
+                    } else if (rawResp != null && !rawResp.toString().isBlank()) {
+                         respostasDevolucao.add(rawResp.toString());
+                    }
+
                     Boolean active = Boolean.valueOf(String.valueOf(root.getOrDefault("active", "true")));
                     Integer orderIndex = Integer.valueOf(String.valueOf(root.getOrDefault("order_index", "0")));
 
                     // Extração de Modelos
                     List<String> modelosAceitos = extractList(root, "modelosAceitos", "modelos_aceitos");
                     List<String> modelosNaoAceitos = extractList(root, "modelosNaoAceitos", "modelos_nao_aceitos");
+                    
+                    // Merge old lists into new field
+                    List<String> combinedModels = new ArrayList<>(modelosAceitos);
+                    if (!modelosNaoAceitos.isEmpty()) {
+                        combinedModels.add("--- Modelos Não Aceitos (Legado) ---");
+                        combinedModels.addAll(modelosNaoAceitos);
+                    }
+                    
+                    String condicao = getString(root, "condicao", "");
+                    String videoExplicativo = getString(root, "videoExplicativo", getString(root, "video_explicativo", ""));
 
                     // Extração de Manual
                     String linkFluxo = "";
@@ -99,10 +121,13 @@ public class JsonToDatabaseMigrationService {
 
                     KnowledgeDoc doc = new KnowledgeDoc(
                         id, tema, fluxo, tipoRenda, podeAceitar, acaoAnalista, 
-                        respostaDevolucao, linkFluxo, linkResposta
+                        respostasDevolucao, linkFluxo, linkResposta
                     );
-                    doc.setModelosAceitos(modelosAceitos);
-                    doc.setModelosNaoAceitos(modelosNaoAceitos);
+                    doc.setModelosAceitosNaoAceitos(combinedModels);
+                    doc.setCondicao(condicao);
+                    doc.setVideoExplicativo(videoExplicativo);
+                    doc.setKeywords(keywords);
+                    // doc.setModelosNaoAceitos(modelosNaoAceitos); // Removed
                     
                     doc.setActive(active);
                     doc.setOrderIndex(orderIndex);
@@ -120,6 +145,13 @@ public class JsonToDatabaseMigrationService {
                     doc.setCreatedAt(jsonCreated != null ? LocalDateTime.parse(jsonCreated) : fileCreated);
                     doc.setUpdatedAt(jsonUpdated != null ? LocalDateTime.parse(jsonUpdated) : fileModified);
 
+                    if (tema != null && !tema.isBlank()) {
+                        String themeName = tema.trim();
+                        com.assistbpo.model.Theme themeEntity = themeRepository.findByNome(themeName)
+                                .orElseGet(() -> themeRepository.save(new com.assistbpo.model.Theme(themeName)));
+                        doc.setThemeObj(themeEntity);
+                    }
+
                     repository.save(doc);
 
                 } catch (IOException e) {
@@ -136,6 +168,12 @@ public class JsonToDatabaseMigrationService {
         return Optional.ofNullable(map.get(key))
                 .map(Object::toString)
                 .orElse(defaultValue);
+    }
+
+    private Object mapHasKey(Map<String, Object> map, String key1, String key2) {
+        if (map.containsKey(key1)) return map.get(key1);
+        if (map.containsKey(key2)) return map.get(key2);
+        return null;
     }
 
     private List<String> extractList(Map<String, Object> map, String key1, String key2) {

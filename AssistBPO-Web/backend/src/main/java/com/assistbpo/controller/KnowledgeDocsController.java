@@ -95,9 +95,10 @@ public class KnowledgeDocsController {
         doc.setTipoRenda(updates.getTipoRenda());
         doc.setPodeAceitar(updates.getPodeAceitar());
         doc.setAcaoAnalista(updates.getAcaoAnalista());
-        doc.setModelosAceitos(updates.getModelosAceitos());
-        doc.setModelosNaoAceitos(updates.getModelosNaoAceitos());
-        doc.setRespostaDevolucao(updates.getRespostaDevolucao());
+        doc.setModelosAceitosNaoAceitos(updates.getModelosAceitosNaoAceitos());
+        doc.setCondicao(updates.getCondicao());
+        doc.setVideoExplicativo(updates.getVideoExplicativo());
+        doc.setRespostasDevolucao(updates.getRespostasDevolucao());
         doc.setManualLinkFluxo(updates.getManualLinkFluxo());
         doc.setManualLinkResposta(updates.getManualLinkResposta());
         

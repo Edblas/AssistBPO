@@ -7,11 +7,13 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
     fluxo: '',
     tipoRenda: '',
     podeAceitar: false,
+    condicao: '',
+    videoExplicativo: '',
     active: true,
-    respostaDevolucao: '',
+    respostasDevolucaoText: '',
     manualLinkFluxo: '',
-    modelosAceitosText: '',
-    modelosNaoAceitosText: '',
+    modelosAceitosNaoAceitosText: '',
+    keywordsText: '',
     acaoAnalistaText: ''
   })
   const [saving, setSaving] = useState(false)
@@ -21,9 +23,12 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
     if (initialData) {
       setDoc({
         ...initialData,
-        modelosAceitosText: (initialData.modelosAceitos || []).join('\n'),
-        modelosNaoAceitosText: (initialData.modelosNaoAceitos || []).join('\n'),
-        acaoAnalistaText: (initialData.acaoAnalista || []).join('\n')
+        condicao: initialData.condicao || '',
+        videoExplicativo: initialData.videoExplicativo || '',
+        modelosAceitosNaoAceitosText: (initialData.modelosAceitosNaoAceitos || []).join('\n'),
+        keywordsText: (initialData.keywords || []).join('\n'),
+        acaoAnalistaText: (initialData.acaoAnalista || []).join('\n'),
+        respostasDevolucaoText: (initialData.respostasDevolucao || []).join('\n')
       })
     }
   }, [initialData])
@@ -36,9 +41,10 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
     // Converter textos em arrays
     const payload = {
       ...doc,
-      modelosAceitos: doc.modelosAceitosText.split('\n').map(s => s.trim()).filter(Boolean),
-      modelosNaoAceitos: doc.modelosNaoAceitosText.split('\n').map(s => s.trim()).filter(Boolean),
-      acaoAnalista: doc.acaoAnalistaText.split('\n').map(s => s.trim()).filter(Boolean)
+      modelosAceitosNaoAceitos: doc.modelosAceitosNaoAceitosText.split('\n').map(s => s.trim()).filter(Boolean),
+      keywords: doc.keywordsText.split('\n').map(s => s.trim()).filter(Boolean),
+      acaoAnalista: doc.acaoAnalistaText.split('\n').map(s => s.trim()).filter(Boolean),
+      respostasDevolucao: doc.respostasDevolucaoText.split('\n').map(s => s.trim()).filter(Boolean)
     }
 
     try {
@@ -126,6 +132,26 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
         </div>
 
         <div className="md:col-span-2">
+          <label className="block text-sm font-medium mb-1">Condição</label>
+          <input 
+            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
+            value={doc.condicao}
+            onChange={e => setDoc({...doc, condicao: e.target.value})}
+            placeholder="Ex: Aceitar apenas se o documento estiver assinado"
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium mb-1">Vídeo Explicativo (Link)</label>
+          <input 
+            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
+            value={doc.videoExplicativo}
+            onChange={e => setDoc({...doc, videoExplicativo: e.target.value})}
+            placeholder="https://youtube.com/..."
+          />
+        </div>
+
+        <div className="md:col-span-2">
           <label className="block text-sm font-medium mb-1">Ações do Analista (uma ação por linha)</label>
           <textarea 
             className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
@@ -137,12 +163,13 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-1">Resposta de Devolução</label>
+          <label className="block text-sm font-medium mb-1">Respostas de Devolução (uma por linha)</label>
           <textarea 
             className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
-            rows="2"
-            value={doc.respostaDevolucao}
-            onChange={e => setDoc({...doc, respostaDevolucao: e.target.value})}
+            rows="3"
+            value={doc.respostasDevolucaoText}
+            onChange={e => setDoc({...doc, respostasDevolucaoText: e.target.value})}
+            placeholder="Ex: Favor reenviar documento legível&#10;Ex: Documento sem assinatura"
           />
         </div>
 
@@ -155,27 +182,29 @@ export function FlowEditor({ initialData, onSave, onCancel, temas }) {
           />
         </div>
 
-        <div className="md:col-span-1">
-          <label className="block text-sm font-medium mb-1">Modelos Aceitos (um link por linha)</label>
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium mb-1">Palavras-Chave (uma por linha) - O chatbot identificará o fluxo por estas palavras</label>
           <textarea 
             className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             rows="3"
-            placeholder="http://exemplo.com/doc1.pdf&#10;http://exemplo.com/doc2.pdf"
-            value={doc.modelosAceitosText}
-            onChange={e => setDoc({...doc, modelosAceitosText: e.target.value})}
+            placeholder="Ex: Nota Fiscal&#10;NF&#10;Comprovante"
+            value={doc.keywordsText}
+            onChange={e => setDoc({...doc, keywordsText: e.target.value})}
           />
         </div>
 
         <div className="md:col-span-1">
-          <label className="block text-sm font-medium mb-1">Modelos Não Aceitos (um link por linha)</label>
+          <label className="block text-sm font-medium mb-1">Modelos Aceitos/Não Aceitos (um link por linha)</label>
           <textarea 
             className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             rows="3"
-            placeholder="http://exemplo.com/recusado.pdf"
-            value={doc.modelosNaoAceitosText}
-            onChange={e => setDoc({...doc, modelosNaoAceitosText: e.target.value})}
+            placeholder="http://exemplo.com/doc1.pdf&#10;http://exemplo.com/doc2.pdf"
+            value={doc.modelosAceitosNaoAceitosText}
+            onChange={e => setDoc({...doc, modelosAceitosNaoAceitosText: e.target.value})}
           />
         </div>
+
+        {/* Removed Modelos Não Aceitos */}
 
         <div className="md:col-span-2 flex items-center justify-end gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
            <button 

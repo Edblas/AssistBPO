@@ -3,20 +3,6 @@ import React from 'react'
 export function SideMenu({ setView, toggleDarkMode, dark }) {
   return (
     <div className="fixed top-20 right-4 w-44 bg-white dark:bg-gray-800 border rounded-md p-3 space-y-2 shadow z-40">
-      <button
-        onClick={() => setView('admin')}
-        className="w-full py-2 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300 text-sm font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/70 transition"
-      >
-        ⚙️ Gerenciar Fluxos
-      </button>
-
-      <button
-        onClick={toggleDarkMode}
-        className="w-full py-2 rounded-xl bg-gray-200 dark:bg-gray-700 text-sm font-semibold"
-      >
-        {dark ? '🌞 Claro' : '🌙 Escuro'}
-      </button>
-
       <a
         href="https://grupometa-my.sharepoint.com/:o:/r/personal/mauricio_konig_meta_com_br/_layouts/15/Doc.aspx?sourcedoc=%7Bc25ac0fa-50eb-4c80-a819-1cd9d982f327%7D&action=view&wd=target(RENDA%20PJ.one%7C12361420-7a37-41e0-950d-97ea5c687924%2FSimples%20Nacional%7Ca5dbd916-a336-4e5f-a5ca-d4bc7bdb2fb9%2F)&wdorigin=NavigationUrl"
         target="_blank"
@@ -24,15 +10,6 @@ export function SideMenu({ setView, toggleDarkMode, dark }) {
         className="block text-sm px-2 py-1 rounded bg-blue-50 dark:bg-gray-700"
       >
         Regramento Sicoob
-      </a>
-
-      <a
-        href="https://validar.iti.gov.br/"
-        target="_blank"
-        rel="noreferrer"
-        className="block text-sm px-2 py-1 rounded bg-blue-50 dark:bg-gray-700"
-      >
-        Validador ITI
       </a>
 
       <a

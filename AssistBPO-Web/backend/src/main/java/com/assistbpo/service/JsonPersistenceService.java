@@ -60,11 +60,14 @@ public class JsonPersistenceService {
         map.put("order_index", doc.getOrderIndex());
         
         // Lists
+        map.put("keywords", doc.getKeywords());
         map.put("acao_analista", doc.getAcaoAnalista());
-        map.put("modelos_aceitos", doc.getModelosAceitos());
-        map.put("modelos_nao_aceitos", doc.getModelosNaoAceitos());
+        map.put("modelos_aceitos", doc.getModelosAceitosNaoAceitos());
+        map.put("condicao", doc.getCondicao());
+        map.put("video_explicativo", doc.getVideoExplicativo());
+        // map.put("modelos_nao_aceitos", doc.getModelosNaoAceitos()); // Removed
         
-        map.put("resposta_devolucao", doc.getRespostaDevolucao());
+        map.put("resposta_devolucao", doc.getRespostasDevolucao()); // Agora é lista
         
         // Manual links
         Map<String, String> manual = new LinkedHashMap<>();

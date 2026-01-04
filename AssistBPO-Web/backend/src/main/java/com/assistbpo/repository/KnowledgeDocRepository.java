@@ -15,6 +15,15 @@ public interface KnowledgeDocRepository extends JpaRepository<KnowledgeDoc, Long
 
     // Busca simplificada por texto (no Postgres real, ideal usar Full Text Search)
     // Aqui usamos ILIKE para buscar em qualquer parte do searchableText
-    @Query(value = "SELECT * FROM knowledge_docs WHERE searchable_text LIKE %:term%", nativeQuery = true)
+    @Query(value = "SELECT DISTINCT k.* FROM knowledge_docs k " +
+                   "LEFT JOIN doc_keywords dk ON k.id = dk.doc_id " +
+                   "WHERE k.searchable_text LIKE %:term% " +
+                   "OR dk.keyword LIKE %:term%", nativeQuery = true)
     List<KnowledgeDoc> searchByText(String term);
+
+    @Query("SELECT k FROM KnowledgeDoc k WHERE k.id NOT IN (SELECT m.flux.id FROM MetricAccessLog m)")
+    List<KnowledgeDoc> findNeverAccessedDocs();
+
+    @Query("SELECT k FROM KnowledgeDoc k WHERE k.updatedAt < :cutoffDate")
+    List<KnowledgeDoc> findOutdatedDocs(java.time.LocalDateTime cutoffDate);
 }
