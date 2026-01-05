@@ -20,7 +20,7 @@ export function VolumetricsPanel({ onBack }) {
   const fetchDashboard = async () => {
     setLoading(true);
     try {
-      let url = 'http://localhost:8080/api/volumetrics/dashboard';
+      let url = `${API_BASE_URL}/api/volumetrics/dashboard`;
       if (selectedUser) {
         url += `?targetUserId=${encodeURIComponent(selectedUser)}`;
       }

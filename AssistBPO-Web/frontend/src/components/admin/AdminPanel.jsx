@@ -151,7 +151,7 @@ export function AdminPanel({ onBack }) {
     if (!window.confirm(`Deseja realmente ${action} o fluxo "${doc.fluxo}"?`)) return
 
     try {
-      const res = await fetch(`http://localhost:8080/api/docs/${doc.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/docs/${doc.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...doc, active: newStatus })
@@ -170,7 +170,7 @@ export function AdminPanel({ onBack }) {
     if (!window.confirm('ATENÇÃO: Exclusão Definitiva!\n\nTem certeza que deseja apagar permanentemente este fluxo?')) return
 
     try {
-      const res = await fetch(`http://localhost:8080/api/docs/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/docs/${id}`, {
         method: 'DELETE'
       })
       if (res.ok) {
@@ -205,7 +205,7 @@ export function AdminPanel({ onBack }) {
         orderMap[doc.id] = index;
       });
 
-      fetch('http://localhost:8080/api/docs/reorder', {
+      fetch(`${API_BASE_URL}/api/docs/reorder`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderMap)
