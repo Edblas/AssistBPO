@@ -2,7 +2,6 @@ package com.assistbpo.controller;
 
 import com.assistbpo.model.KnowledgeDoc;
 import com.assistbpo.repository.KnowledgeDocRepository;
-import com.assistbpo.service.JsonPersistenceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -14,11 +13,9 @@ import java.util.*;
 public class KnowledgeDocsController {
 
     private final KnowledgeDocRepository repository;
-    private final JsonPersistenceService jsonPersistenceService;
 
-    public KnowledgeDocsController(KnowledgeDocRepository repository, JsonPersistenceService jsonPersistenceService) {
+    public KnowledgeDocsController(KnowledgeDocRepository repository) {
         this.repository = repository;
-        this.jsonPersistenceService = jsonPersistenceService;
     }
 
     @GetMapping
@@ -111,14 +108,12 @@ public class KnowledgeDocsController {
         doc.updateSearchableText();
         
         KnowledgeDoc saved = repository.save(doc);
-        jsonPersistenceService.save(saved);
         return saved;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) throws IOException {
         KnowledgeDoc doc = repository.findById(id).orElseThrow(() -> new RuntimeException("Doc not found"));
-        jsonPersistenceService.delete(doc);
         repository.delete(doc);
     }
 
