@@ -36,9 +36,13 @@ public class ConsultaController {
 
         // Busca simplificada no banco
         // Tenta encontrar um documento que contenha a pergunta ou parte dela
-        // Aqui estamos simplificando a lógica de "slug" anterior para uma busca textual
-        // Idealmente, usaríamos Full Text Search do Postgres
-        List<KnowledgeDoc> docs = repository.searchByText(norm);
+        // 1. Tenta buscar por Título ou Palavra-chave (Prioridade)
+        List<KnowledgeDoc> docs = repository.searchByTitleOrKeyword(norm);
+
+        if (docs.isEmpty()) {
+            // 2. Se não achar, busca no texto completo (Searchable Text)
+            docs = repository.searchByText(norm);
+        }
         
         KnowledgeDoc doc = null;
         if (!docs.isEmpty()) {

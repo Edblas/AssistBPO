@@ -2,6 +2,7 @@
   "id": "declaracao_faturamento",
   "tema": "Renda PJ",
   "documento": "Declaração de Faturamento - Relação de Faturamento",
+  "keywords": [ "faturamento", "declaracao de faturamento", "relacao de faturamento" ],
 
   "pode_aceitar": true,
   "condicao": "Empresa com relação de faturamento válida, assinada conforme regras e com período claramente definido",

@@ -7,7 +7,7 @@
   "podeAceitar" : true,
   "active" : true,
   "order_index" : 0,
-  "keywords" : [ ],
+  "keywords" : [ "desenquadramento", "simples nacional", "simei" ],
   "acao_analista" : [ "Consultar obrigatoriamente o CNPJ no site do Simples Nacional para verificar a situação cadastral", "Confirmar se o desenquadramento do Simples Nacional ou do SIMEI é recente", "Verificar se a empresa ainda não completou um mês cheio no novo enquadramento", "Validar a declaração de faturamento dos últimos 12 meses conforme as regras gerais de Renda PJ", "Não utilizar a Consulta Receita Federal – Pessoa Jurídica como única base, pois não informa a data de desenquadramento", "Aceitar a declaração de faturamento quando o extrato do Simples Nacional ainda não estiver disponível no sistema da Receita Federal" ],
   "modelos_aceitos" : [ ],
   "condicao" : "Desenquadramento recente do Simples Nacional ou SIMEI, sem completar um mês cheio no novo enquadramento",
