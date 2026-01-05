@@ -111,6 +111,18 @@ export default function App() {
 
       {/* FERRAMENTA DE PRODUTIVIDADE (CONTADOR - ESQUERDA) */}
       <DailyGoalCounter isExpanded={isCounterExpanded} setIsExpanded={setIsCounterExpanded} />
+      
+      {/* Botão de Health Check */}
+      <div className={`fixed left-4 transition-all duration-300 z-40 ${isCounterExpanded ? 'bottom-20' : 'bottom-4'}`}>
+        <button
+          onClick={() => window.open('http://localhost:8080/health', '_blank')}
+          className="p-2 bg-green-100 text-green-700 hover:bg-green-200 rounded-full shadow-sm text-xs font-medium flex items-center gap-1 border border-green-200"
+          title="Verificar status do sistema"
+        >
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          Status
+        </button>
+      </div>
 
       {/* PAINEL DE FERRAMENTAS RÁPIDAS (DIREITA) */}
       <QuickToolsPanel />
