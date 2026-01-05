@@ -26,7 +26,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 @RestController
 @RequestMapping("/api/cnpj")
-@CrossOrigin(origins = "*")
 public class CnpjController {
 
     @GetMapping("/{cnpj}")
