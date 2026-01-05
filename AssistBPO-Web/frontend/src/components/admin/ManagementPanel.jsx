@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../../services/api';
 
-const API_BASE = 'http://localhost:8080/api/management/metrics';
+const API_BASE = `${API_BASE_URL}/api/management/metrics`;
 
 export function ManagementPanel({ onBack }) {
   const [period, setPeriod] = useState('Mês');

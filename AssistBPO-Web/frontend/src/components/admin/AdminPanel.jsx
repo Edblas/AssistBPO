@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { arrayMove } from '@dnd-kit/sortable'
+import { API_BASE_URL } from '../../services/api'
 import { ThemeList } from './ThemeList'
 import { FlowList } from './FlowList'
 import { FlowEditor } from './FlowEditor'
@@ -23,7 +24,7 @@ export function AdminPanel({ onBack }) {
   async function fetchTree() {
     setLoading(true)
     try {
-      const res = await fetch(`http://localhost:8080/api/docs/tree?includeInactive=true`) // Sempre traz tudo, filtro visual nos componentes
+      const res = await fetch(`${API_BASE_URL}/api/docs/tree?includeInactive=true`) // Sempre traz tudo, filtro visual nos componentes
       const data = await res.json()
       setTree(data)
     } catch (e) {
@@ -70,7 +71,7 @@ export function AdminPanel({ onBack }) {
     try {
         await Promise.all(flows.map(doc => {
             if (doc.active !== newStatus) {
-                return fetch(`http://localhost:8080/api/docs/${doc.id}`, {
+                return fetch(`${API_BASE_URL}/api/docs/${doc.id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ...doc, active: newStatus })

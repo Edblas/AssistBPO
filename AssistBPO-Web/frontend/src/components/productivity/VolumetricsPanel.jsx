@@ -45,7 +45,7 @@ export function VolumetricsPanel({ onBack }) {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/volumetrics/users', {
+      const res = await fetch(`${API_BASE_URL}/api/volumetrics/users`, {
         headers: { 'X-User-Role': userRole }
       });
       if (res.ok) {

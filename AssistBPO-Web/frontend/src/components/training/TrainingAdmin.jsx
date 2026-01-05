@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../../services/api';
 
-const API_BASE = 'http://localhost:8080/api/training';
+const API_BASE = `${API_BASE_URL}/api/training`;
 
 export function TrainingAdmin({ onBack }) {
   const [activeTab, setActiveTab] = useState('content'); // 'content' | 'audit'

@@ -79,7 +79,7 @@ export function DailyGoalCounter({ isExpanded, setIsExpanded }) {
         payload[idx].count = currentCount;
       }
 
-      await fetch('http://localhost:8080/api/volumetrics/sync', {
+      await fetch(`${API_BASE_URL}/api/volumetrics/sync`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

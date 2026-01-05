@@ -35,7 +35,7 @@ export function CnpjFinder({ onBack }) {
 
     try {
       // Usar Proxy Backend para evitar problemas de CORS e SSL
-      const response = await fetch(`http://localhost:8080/api/cnpj/${cleanCnpj}`);
+      const response = await fetch(`${API_BASE_URL}/api/cnpj/${cleanCnpj}`);
       
       if (response.status === 404) {
         throw new Error('CNPJ não encontrado na base de dados.');

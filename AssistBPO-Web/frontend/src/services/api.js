@@ -1,6 +1,10 @@
+export const API_BASE_URL = import.meta.env.PROD 
+  ? 'https://assistbpo-backend.onrender.com' 
+  : 'http://localhost:8080';
+
 export const api = {
   async consultar(pergunta) {
-    const res = await fetch('http://localhost:8080/api/consulta', {
+    const res = await fetch(`${API_BASE_URL}/api/consulta`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pergunta })
