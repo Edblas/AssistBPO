@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/docs")
 public class KnowledgeDocsController {
 
@@ -101,6 +100,7 @@ public class KnowledgeDocsController {
         doc.setRespostasDevolucao(updates.getRespostasDevolucao());
         doc.setManualLinkFluxo(updates.getManualLinkFluxo());
         doc.setManualLinkResposta(updates.getManualLinkResposta());
+        doc.setKeywords(updates.getKeywords());
         
         // Active Status
         if (updates.getActive() != null) {

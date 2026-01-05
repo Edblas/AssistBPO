@@ -120,8 +120,8 @@ export function AdminPanel({ onBack }) {
 
   async function handleSaveFlow(docPayload) {
     const url = docPayload.id 
-      ? `http://localhost:8080/api/docs/${docPayload.id}` 
-      : 'http://localhost:8080/api/docs'
+      ? `${API_BASE_URL}/api/docs/${docPayload.id}` 
+      : `${API_BASE_URL}/api/docs`
     
     const method = docPayload.id ? 'PUT' : 'POST'
 
