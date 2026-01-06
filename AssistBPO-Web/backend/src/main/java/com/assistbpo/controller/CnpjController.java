@@ -1,6 +1,7 @@
 package com.assistbpo.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 public class CnpjController {
 
     @GetMapping("/{cnpj}")
+    @Cacheable(value = "cnpj", key = "#cnpj")
     public ResponseEntity<?> consultarCnpj(@PathVariable String cnpj) {
         // Limpar CNPJ mantendo apenas números
         String cleanCnpj = cnpj.replaceAll("\\D", "");

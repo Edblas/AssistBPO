@@ -2,6 +2,8 @@ package com.assistbpo.controller;
 
 import com.assistbpo.model.KnowledgeDoc;
 import com.assistbpo.repository.KnowledgeDocRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -19,6 +21,7 @@ public class KnowledgeDocsController {
     }
 
     @GetMapping
+    @Cacheable("docsList")
     public Map<String, Object> list() {
         List<KnowledgeDoc> docs = repository.findAll();
         Map<String, Object> m = new HashMap<>();
@@ -28,6 +31,7 @@ public class KnowledgeDocsController {
     }
 
     @GetMapping("/tree")
+    @Cacheable("docsTree")
     public Map<String, List<KnowledgeDoc>> getTree(@RequestParam(required = false, defaultValue = "false") boolean includeInactive) {
         List<KnowledgeDoc> all = repository.findAll();
         Map<String, List<KnowledgeDoc>> tree = new TreeMap<>(); // TreeMap para ordenar chaves (Temas)
@@ -52,6 +56,7 @@ public class KnowledgeDocsController {
     }
     
     @PostMapping("/reorder")
+    @CacheEvict(value = {"docsList", "docsTree", "docBySlug", "consulta"}, allEntries = true)
     public void reorder(@RequestBody Map<Long, Integer> newOrders) throws IOException {
         List<KnowledgeDoc> docs = repository.findAllById(newOrders.keySet());
         for (KnowledgeDoc doc : docs) {
@@ -63,6 +68,7 @@ public class KnowledgeDocsController {
     }
 
     @PostMapping
+    @CacheEvict(value = {"docsList", "docsTree", "docBySlug", "consulta"}, allEntries = true)
     public KnowledgeDoc create(@RequestBody KnowledgeDoc doc) throws IOException {
         if (doc.getSlug() == null || doc.getSlug().isBlank()) {
             // Gerar slug simples se não vier
@@ -81,6 +87,7 @@ public class KnowledgeDocsController {
     }
 
     @PutMapping("/{id}")
+    @CacheEvict(value = {"docsList", "docsTree", "docBySlug", "consulta"}, allEntries = true)
     public KnowledgeDoc update(@PathVariable Long id, @RequestBody KnowledgeDoc updates) throws IOException {
         KnowledgeDoc doc = repository.findById(id).orElseThrow(() -> new RuntimeException("Doc not found"));
         
@@ -110,12 +117,14 @@ public class KnowledgeDocsController {
     }
 
     @DeleteMapping("/{id}")
+    @CacheEvict(value = {"docsList", "docsTree", "docBySlug", "consulta"}, allEntries = true)
     public void delete(@PathVariable Long id) throws IOException {
         KnowledgeDoc doc = repository.findById(id).orElseThrow(() -> new RuntimeException("Doc not found"));
         repository.delete(doc);
     }
 
     @GetMapping("/{slug}")
+    @Cacheable(value = "docBySlug", key = "#slug")
     public KnowledgeDoc bySlug(@PathVariable String slug) {
         return repository.findBySlug(slug).orElse(null);
     }

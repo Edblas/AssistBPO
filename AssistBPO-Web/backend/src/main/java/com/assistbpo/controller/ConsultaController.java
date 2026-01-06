@@ -2,6 +2,7 @@ package com.assistbpo.controller;
 
 import com.assistbpo.model.KnowledgeDoc;
 import com.assistbpo.repository.KnowledgeDocRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.Normalizer;
@@ -18,6 +19,7 @@ public class ConsultaController {
     }
 
     @PostMapping("/api/consulta")
+    @Cacheable(value = "consulta", key = "T(java.util.Objects).toString(#body != null ? #body.get('pergunta') : '')")
     public Map<String, Object> consultar(
             @RequestBody(required = false) Map<String, Object> body) {
 
