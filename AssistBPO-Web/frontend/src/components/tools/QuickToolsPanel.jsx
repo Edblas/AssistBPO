@@ -4,6 +4,8 @@ import { PJCalculator } from './income/PJCalculator';
 import { AgroCalculator } from './income/AgroCalculator';
 import { CnpjFinder } from './cnpj/CnpjFinder';
 import { OpinionTemplates } from './pareceres/OpinionTemplates';
+import { ChecklistPanel } from './checklist/ChecklistPanel';
+import { RulesPanel } from './regras/RulesPanel';
 
 export function QuickToolsPanel() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,20 @@ export function QuickToolsPanel() {
       icon: '🚜',
       color: 'bg-green-100 text-green-700',
       component: AgroCalculator
+    },
+    {
+      id: 'checklist',
+      title: 'Checklist',
+      icon: '✅',
+      color: 'bg-emerald-100 text-emerald-700',
+      component: ChecklistPanel
+    },
+    {
+      id: 'regras',
+      title: 'Regras IRPF',
+      icon: '📜',
+      color: 'bg-yellow-100 text-yellow-700',
+      component: RulesPanel
     },
     {
       id: 'cnpj',
@@ -70,6 +86,7 @@ export function QuickToolsPanel() {
   };
 
   const ActiveComponent = activeTool ? tools.find(t => t.id === activeTool)?.component : null;
+  const isWide = activeTool === 'checklist';
 
   return (
     <>
@@ -108,7 +125,7 @@ export function QuickToolsPanel() {
 
       {/* Janela da Ferramenta Ativa */}
       {activeTool && ActiveComponent && (
-        <div className="fixed bottom-4 right-4 z-50 w-[450px] max-h-[80vh] bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-slide-in-right">
+        <div className={`fixed bottom-4 right-4 z-50 ${isWide ? 'w-[90vw] max-w-[1000px] h-[85vh]' : 'w-[450px] max-h-[80vh]'} bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-slide-in-right transition-all duration-300`}>
           
           {/* Header da Ferramenta */}
           <div className="flex justify-between items-center p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">

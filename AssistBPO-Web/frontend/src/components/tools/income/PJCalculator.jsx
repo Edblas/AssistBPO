@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export function PJCalculator() {
-  const [tab, setTab] = useState('dates') // 'dates' | 'faturamento'
+  const [tab, setTab] = useState('dates') // 'dates' | 'faturamento' | 'quotas'
 
   // State Datas
   const [startDate, setStartDate] = useState('')
@@ -11,6 +11,11 @@ export function PJCalculator() {
   // State Faturamento
   const [months, setMonths] = useState(Array(12).fill(''))
   const [rbt12, setRbt12] = useState(0)
+
+  // State Quotas
+  const [capitalSocial, setCapitalSocial] = useState('')
+  const [valorCota, setValorCota] = useState('')
+  const [porcentagem, setPorcentagem] = useState('')
 
   function calculateDateDiff() {
     if (!startDate || !endDate) return
@@ -33,6 +38,26 @@ export function PJCalculator() {
     setRbt12(total)
   }
 
+  function calculateQuotas() {
+    const capital = parseFloat(capitalSocial)
+    const cota = parseFloat(valorCota)
+    const pct = parseFloat(porcentagem)
+
+    if (capital && cota) {
+        // Calculate Percentage
+        setPorcentagem(((cota / capital) * 100).toFixed(4))
+    } else if (capital && pct) {
+        // Calculate Value
+        setValorCota(((pct / 100) * capital).toFixed(2))
+    }
+  }
+
+  function clearQuotas() {
+    setCapitalSocial('')
+    setValorCota('')
+    setPorcentagem('')
+  }
+
   const formatCurrency = (val) => {
     return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
@@ -42,18 +67,24 @@ export function PJCalculator() {
         <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white border-b pb-2">Calculadora de Renda PJ</h2>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex gap-4 mb-6 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
             <button 
                 onClick={() => setTab('dates')}
-                className={`pb-2 px-4 font-medium transition ${tab === 'dates' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`pb-2 px-4 font-medium transition whitespace-nowrap ${tab === 'dates' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
                 📅 Calculadora de Datas
             </button>
             <button 
                 onClick={() => setTab('faturamento')}
-                className={`pb-2 px-4 font-medium transition ${tab === 'faturamento' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`pb-2 px-4 font-medium transition whitespace-nowrap ${tab === 'faturamento' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
                 💰 RBT12 (Simples Nacional)
+            </button>
+            <button 
+                onClick={() => setTab('quotas')}
+                className={`pb-2 px-4 font-medium transition whitespace-nowrap ${tab === 'quotas' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700'}`}
+            >
+                📊 Cálculo de Quotas
             </button>
         </div>
 
@@ -125,6 +156,60 @@ export function PJCalculator() {
                     </div>
                     <p className="text-3xl font-bold text-gray-900 dark:text-white">{formatCurrency(rbt12)}</p>
                 </div>
+            </div>
+        )}
+
+        {tab === 'quotas' && (
+            <div className="space-y-6">
+                 <p className="text-sm text-gray-500">Preencha o Capital Social e um dos outros campos (Valor ou % da Cota) para calcular.</p>
+                 
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Capital Social (R$)</label>
+                        <input 
+                            type="number" 
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-purple-500"
+                            placeholder="0.00"
+                            value={capitalSocial}
+                            onChange={e => setCapitalSocial(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Valor da Cota (R$)</label>
+                        <input 
+                            type="number" 
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-purple-500"
+                            placeholder="0.00"
+                            value={valorCota}
+                            onChange={e => { setValorCota(e.target.value); setPorcentagem(''); }}
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Porcentagem (%)</label>
+                        <input 
+                            type="number" 
+                            className="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-purple-500"
+                            placeholder="0.00"
+                            value={porcentagem}
+                            onChange={e => { setPorcentagem(e.target.value); setValorCota(''); }}
+                        />
+                    </div>
+                 </div>
+
+                 <div className="flex gap-4">
+                    <button 
+                        onClick={calculateQuotas}
+                        className="flex-1 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition font-bold"
+                    >
+                        Calcular
+                    </button>
+                    <button 
+                        onClick={clearQuotas}
+                        className="px-6 border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                    >
+                        Limpar
+                    </button>
+                 </div>
             </div>
         )}
     </div>
