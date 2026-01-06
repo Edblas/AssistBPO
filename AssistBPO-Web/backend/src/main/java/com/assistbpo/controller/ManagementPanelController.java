@@ -1,5 +1,6 @@
 package com.assistbpo.controller;
 
+import com.assistbpo.dto.ChatStatsDTO;
 import com.assistbpo.service.ManagementPanelService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,5 +58,11 @@ public class ManagementPanelController {
     public ResponseEntity<?> getFrequentChatQuestions(@RequestHeader(value = "X-User-Role", required = false) String role) {
         if (!isAuthorized(role)) return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
         return ResponseEntity.ok(service.getFrequentChatQuestions());
+    }
+
+    @GetMapping("/chat-stats")
+    public ResponseEntity<?> getChatStats(@RequestHeader(value = "X-User-Role", required = false) String role) {
+        if (!isAuthorized(role)) return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
+        return ResponseEntity.ok(service.getChatStats());
     }
 }

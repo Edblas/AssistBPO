@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../../services/api';
 
 export function DailyGoalCounter({ isExpanded, setIsExpanded }) {
   const [count, setCount] = useState(() => {

@@ -1,10 +1,12 @@
 package com.assistbpo.service;
 
+import com.assistbpo.dto.ChatStatsDTO;
 import com.assistbpo.model.KnowledgeDoc;
 import com.assistbpo.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +71,27 @@ public class ManagementPanelService {
             map.put("frequencia", count);
             return map;
         }).collect(Collectors.toList());
+    }
+
+    public ChatStatsDTO getChatStats() {
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDateTime startOfDay = now.with(LocalTime.MIN);
+        LocalDateTime endOfDay = now.with(LocalTime.MAX);
+
+        LocalDateTime startOfWeek = now.minusDays(6).with(LocalTime.MIN); // Last 7 days
+
+        LocalDateTime startOfYear = now.withDayOfYear(1).with(LocalTime.MIN);
+
+        Long daily = chatLogRepository.countByDateBetween(startOfDay, endOfDay);
+        Long weekly = chatLogRepository.countByDateBetween(startOfWeek, endOfDay);
+        Long annual = chatLogRepository.countByDateBetween(startOfYear, endOfDay);
+
+        return new ChatStatsDTO(
+                daily != null ? daily : 0,
+                weekly != null ? weekly : 0,
+                annual != null ? annual : 0
+        );
     }
 
     private Map<String, Object> mapDocToSummary(KnowledgeDoc doc) {

@@ -9,6 +9,7 @@ export function ManagementPanel({ onBack }) {
   const [error, setError] = useState(null);
 
   const [questions, setQuestions] = useState([]);
+  const [chatStats, setChatStats] = useState({ daily: 0, weekly: 0, annual: 0 });
   const [popularFlows, setPopularFlows] = useState([]);
   const [neverAccessedFlows, setNeverAccessedFlows] = useState([]);
   const [outdatedFlows, setOutdatedFlows] = useState([]);
@@ -162,6 +163,25 @@ export function ManagementPanel({ onBack }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         
+        {/* ROW 0: Métricas de Perguntas (Totais) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+            <h3 className="text-blue-100 text-sm font-medium uppercase tracking-wider">Perguntas Hoje</h3>
+            <p className="text-4xl font-bold mt-2">{chatStats.daily}</p>
+            <p className="text-xs text-blue-100 mt-2 opacity-80">Atualizado agora</p>
+          </div>
+          <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
+            <h3 className="text-indigo-100 text-sm font-medium uppercase tracking-wider">Perguntas na Semana</h3>
+            <p className="text-4xl font-bold mt-2">{chatStats.weekly}</p>
+            <p className="text-xs text-indigo-100 mt-2 opacity-80">Últimos 7 dias</p>
+          </div>
+          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+            <h3 className="text-purple-100 text-sm font-medium uppercase tracking-wider">Perguntas no Ano</h3>
+            <p className="text-4xl font-bold mt-2">{chatStats.annual}</p>
+            <p className="text-xs text-purple-100 mt-2 opacity-80">Acumulado do ano</p>
+          </div>
+        </div>
+
         {/* ROW 1: KPIs Principais */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Perguntas Mais Feitas */}

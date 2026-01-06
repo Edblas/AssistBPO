@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../../services/api';
 
 export function VolumetricsPanel({ onBack }) {
   const [data, setData] = useState(null);
