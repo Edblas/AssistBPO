@@ -57,7 +57,6 @@ public class KnowledgeDocsController {
         for (KnowledgeDoc doc : docs) {
             if (newOrders.containsKey(doc.getId())) {
                 doc.setOrderIndex(newOrders.get(doc.getId()));
-                jsonPersistenceService.save(doc); // Atualiza JSON
             }
         }
         repository.saveAll(docs);
@@ -78,7 +77,6 @@ public class KnowledgeDocsController {
         doc.updateSearchableText();
         
         KnowledgeDoc saved = repository.save(doc);
-        jsonPersistenceService.save(saved);
         return saved;
     }
 

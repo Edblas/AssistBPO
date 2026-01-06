@@ -1,7 +1,6 @@
 package com.assistbpo.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "themes")

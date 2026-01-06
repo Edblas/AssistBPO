@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
