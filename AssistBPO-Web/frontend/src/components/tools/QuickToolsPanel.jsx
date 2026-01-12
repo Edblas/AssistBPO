@@ -33,13 +33,6 @@ export function QuickToolsPanel() {
       component: AgroCalculator
     },
     {
-      id: 'checklist',
-      title: 'Checklist',
-      icon: '✅',
-      color: 'bg-emerald-100 text-emerald-700',
-      component: ChecklistPanel
-    },
-    {
       id: 'regras',
       title: 'Regras IRPF',
       icon: '📜',
@@ -85,7 +78,6 @@ export function QuickToolsPanel() {
   };
 
   const ActiveComponent = activeTool ? tools.find(t => t.id === activeTool)?.component : null;
-  const isWide = activeTool === 'checklist';
 
   return (
     <>
