@@ -4,7 +4,6 @@ import { PJCalculator } from './income/PJCalculator';
 import { AgroCalculator } from './income/AgroCalculator';
 import { CnpjFinder } from './cnpj/CnpjFinder';
 import { OpinionTemplates } from './pareceres/OpinionTemplates';
-import { ChecklistPanel } from './checklist/ChecklistPanel';
 import { RulesPanel } from './regras/RulesPanel';
 
 export function QuickToolsPanel() {
@@ -125,7 +124,7 @@ export function QuickToolsPanel() {
 
       {/* Janela da Ferramenta Ativa */}
       {activeTool && ActiveComponent && (
-        <div className={`fixed bottom-4 right-4 z-50 ${isWide ? 'w-[90vw] max-w-[1000px] h-[85vh]' : 'w-[450px] max-h-[80vh]'} bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-slide-in-right transition-all duration-300`}>
+        <div className={`fixed bottom-4 right-4 z-50 w-[450px] max-h-[80vh] bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-slide-in-right transition-all duration-300`}>
           
           {/* Header da Ferramenta */}
           <div className="flex justify-between items-center p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
