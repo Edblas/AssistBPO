@@ -399,7 +399,6 @@ const checklistData = {
             } 
         },
         "responsavel": { "icon": "👨‍💼", "name": "Responsável", "documents": {} }
-    }
 };
 
 export default checklistData;
